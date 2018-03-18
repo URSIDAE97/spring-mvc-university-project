@@ -7,7 +7,7 @@
 * Spring Boot
 * Spring MVC
 * Spring Data - JPA / Hibernate
-* Spring Security - Spring MVC
+* Spring Security
 * Thymeleaf - Template engine
 * H2 - Database engine (for testing purposes only)
 * MySQL - Database engine
