@@ -11,5 +11,7 @@
 * Thymeleaf - Template engine
 * H2 - Database engine (for testing purposes only)
 * MySQL - Database engine
+* IntelliJ IDEA
+* Java 8
 
 
