@@ -1,7 +1,8 @@
 # spring-mvc-university-project
 
 ## Built With
-* Maven - Dependency management
+
+* Maven - Dependency management tool
 * Spring MVC - Spring MVC
 * Spring Boot
 * Spring MVC
