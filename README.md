@@ -9,6 +9,7 @@
 * Spring Data - JPA / Hibernate
 * Spring Security
 * Thymeleaf - Template engine
+* Bootstrap
 * H2 - Database engine (for testing purposes only)
 * MySQL - Database engine
 * IntelliJ IDEA
