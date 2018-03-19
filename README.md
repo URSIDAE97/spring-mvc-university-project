@@ -3,9 +3,8 @@
 ## Built With
 
 * Maven - Dependency management tool
-* Spring MVC - Spring MVC
-* Spring Boot
 * Spring MVC
+* Spring Boot
 * Spring Data - JPA / Hibernate
 * Spring Security
 * Thymeleaf - Template engine
