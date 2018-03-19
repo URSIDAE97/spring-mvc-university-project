@@ -10,3 +10,8 @@ INSERT INTO user_role (user_id, role_id) VALUES (1, 2);
 INSERT INTO user_role (user_id, role_id) VALUES (2, 2);
 INSERT INTO user_role (user_id, role_id) VALUES (3, 1);
 INSERT INTO user_role (user_id, role_id) VALUES (3, 2);
+
+-- EXAMPLE ONLY
+INSERT INTO example (id, example) VALUES (1, 'Example text 1');
+INSERT INTO example (id, example) VALUES (2, 'Example text 2');
+INSERT INTO example (id, example) VALUES (3, 'Example text 3');
