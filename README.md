@@ -15,4 +15,9 @@
 * IntelliJ IDEA
 * Java 8
 
+## login credentials
 
+Email | Password  | Role
+------------ | ------------- | ----
+user@user | password | user
+admin@admin | password | admin
