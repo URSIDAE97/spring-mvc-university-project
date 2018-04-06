@@ -1,8 +1,6 @@
-# spring-mvc-university-project
+# spring-mvc-university-project [![Heroku](https://heroku-badge.herokuapp.com/?app=spring-mvc-university-project&style=flat)]
 
 ## Built With
-
-sprawdzanie
 
 * Maven - Dependency management tool
 * Spring MVC
