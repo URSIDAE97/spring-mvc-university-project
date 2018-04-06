@@ -1,6 +1,6 @@
 # Lista obecnosci C5-L9
 
-Rafal Mitula - [link](https://github.com/rmitula)  
-Michal Maslanka - [link](https://github.com/mmaslank)  
-Aleksandra Musial - [link](https://github.com/AlMusial)
-Marcin Michna - [link](https://github.com/Havqqq)
+1. Rafal Mitula - [link](https://github.com/rmitula)  
+2. Michal Maslanka - [link](https://github.com/mmaslank)  
+3. Aleksandra Musial - [link](https://github.com/AlMusial)
+4. Marcin Michna - [link](https://github.com/Havqqq)
