@@ -3,3 +3,4 @@
 Rafal Mitula - [link](https://github.com/rmitula)  
 Michal Maslanka - [link](https://github.com/mmaslank)  
 Aleksandra Musial - [link](https://github.com/AlMusial)
+Marcin Michna - [link](https://github.com/Havqqq)
