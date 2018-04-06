@@ -1,4 +1,4 @@
-# spring-mvc-university-project [![Heroku](https://heroku-badge.herokuapp.com/?app=spring-mvc-university-project&style=flat)]
+# spring-mvc-university-project [![Heroku](https://heroku-badge.herokuapp.com/?app=spring-mvc-university-project&style=flat)](https://spring-mvc-university-project.herokuapp.com/)
 
 ## Built With
 
