@@ -1,5 +1,13 @@
 # spring-mvc-university-project [![Heroku](https://heroku-badge.herokuapp.com/?app=spring-mvc-university-project&style=flat)](https://spring-mvc-university-project.herokuapp.com/)
 
+
+## Run
+
+```
+mvn clean spring-boot:run
+```
+Application should be available at localhost:8080
+
 ## Built With
 
 * Maven - Dependency management tool
