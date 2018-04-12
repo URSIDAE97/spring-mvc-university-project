@@ -4,3 +4,4 @@
 2. Michal Maslanka - [link](https://github.com/mmaslank)  
 3. Aleksandra Musial - [link](https://github.com/AlMusial)
 4. Marcin Michna - [link](https://github.com/Havqqq)
+5. Bartosz Maziarka - [link](https://github.com/Bar-Maz-PRz)
