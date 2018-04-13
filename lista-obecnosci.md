@@ -7,4 +7,5 @@
 5. Bartosz Maziarka - [link](https://github.com/Bar-Maz-PRz)
 6. Patryk Marchut - [link](https://github.com/pmarchut)
 7. Mateusz Mis - [link](https://github.com/URSIDAE97)
+8. Adam Midura - [link](https://github.com/miduraa11)
 
