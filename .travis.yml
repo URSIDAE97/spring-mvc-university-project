@@ -1,0 +1,4 @@
+# Travis CI
+language: java
+jdk:
+- oraclejdk8
