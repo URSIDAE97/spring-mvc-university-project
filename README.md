@@ -1,4 +1,4 @@
-# spring-mvc-university-project [![Heroku](https://heroku-badge.herokuapp.com/?app=spring-mvc-university-project&style=flat)](https://spring-mvc-university-project.herokuapp.com/) [![Travis CI](https://api.travis-ci.org/rmitula/spring-mvc-university-project.svg?)](https://travis-ci.org/rmitula/spring-mvc-university-project)
+# spring-mvc-university-project [![Heroku](https://heroku-badge.herokuapp.com/?app=spring-mvc-university-project&style=flat)](https://spring-mvc-university-project.herokuapp.com/) [![Travis CI](https://travis-ci.org/rmitula/spring-mvc-university-project.svg?branch=master)](https://travis-ci.org/rmitula/spring-mvc-university-project)
 Every push to master will deploy a new version of this app available on [heroku](https://spring-mvc-university-project.herokuapp.com/).
 
 ## Run
