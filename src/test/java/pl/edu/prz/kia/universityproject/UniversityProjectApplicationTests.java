@@ -39,7 +39,7 @@ public class UniversityProjectApplicationTests {
 		mav = loginController.registration();
 		Assert.assertEquals("registration", mav.getViewName());
 		//simplest possible tests
-		//to see how they works, change expected values to sth else
+		//to see how they work, change expected values to sth else
 	}
 
 }
