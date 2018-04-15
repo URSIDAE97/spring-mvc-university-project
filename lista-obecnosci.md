@@ -10,3 +10,4 @@
 8. Adam Midura - [link](https://github.com/miduraa11)
 9. Damian Mazur - [link](https://github.com/DMazur321)
 10. Michal Moson - [link](https://github.com/taxbwithu)
+11. Konrad Mazurek - [link](https://github.com/kmazurek96)
