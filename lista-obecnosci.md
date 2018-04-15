@@ -9,3 +9,4 @@
 7. Mateusz Mis - [link](https://github.com/URSIDAE97)
 8. Adam Midura - [link](https://github.com/miduraa11)
 9. Damian Mazur - [link](https://github.com/DMazur321)
+10. Michal Moson - [link](https://github.com/taxbwithu)
