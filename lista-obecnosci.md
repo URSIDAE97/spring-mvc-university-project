@@ -8,4 +8,4 @@
 6. Patryk Marchut - [link](https://github.com/pmarchut)
 7. Mateusz Mis - [link](https://github.com/URSIDAE97)
 8. Adam Midura - [link](https://github.com/miduraa11)
-
+9. Damian Mazur - [link](https://github.com/DMazur321)
