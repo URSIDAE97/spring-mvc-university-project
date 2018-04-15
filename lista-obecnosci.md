@@ -12,3 +12,4 @@
 10. Michal Moson - [link](https://github.com/taxbwithu)
 11. Konrad Mazurek - [link](https://github.com/kmazurek96)
 12. Maciej Malochleb - [link](https://github.com/Cyborion)
+13. Patryk Smycz - [link](https://github.com/Moltigan)
