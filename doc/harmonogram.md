@@ -1,6 +1,6 @@
 | lp. |etap|czas (h)|data rozpoczecia|data zakonczenia|
 |:---:|:--:|:------:|:--------------:|:--------------:|
-|1|Rozmowy ze studentami z Wyziału Zarządzania|4|10.03|14.03|
+|1|Rozmowy ze studentami z Wydziału Zarządzania|4|10.03|14.03|
 |2|Określenie celów do zrealizowania|1|15.03|15.03|
 |3|Określenie wymagań|5|16.03|20.03|
 |4|Wstępny projekt systemu|3|21.03|25.03|
