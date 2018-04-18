@@ -6,6 +6,7 @@ import org.springframework.data.annotation.Transient;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -36,12 +37,18 @@ public class User {
 	@NotEmpty(message = "*Podaj nazwisko")
 	private String lastName;
 
+
 	@Column(name = "active")
 	private int active;
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;
+
+
+	@OneToMany(mappedBy = "user")
+	private List<UserAnswer> UserAnswers;
+
 
 	public int getId() {
 		return id;
@@ -98,4 +105,13 @@ public class User {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
+
+	public List<UserAnswer> getUserAnswers() {
+		return UserAnswers;
+	}
+
+	public void setUserAnswers(List<UserAnswer> userAnswers) {
+		UserAnswers = userAnswers;
+	}
+
 }
