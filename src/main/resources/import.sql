@@ -13,9 +13,12 @@ INSERT INTO user_role (user_id, role_id) VALUES (3, 2);
 
 INSERT INTO pytanie (id , tresc) VALUES (1, 'Ddziala');
 
-INSERT INTO odpowiedz_uzytkownika (id, wartosc, question_id, user_id) VALUES (1, 9, 1, 1);
+INSERT INTO odpowiedz_uzytkownika (id, wartosc, question_id, user_user_id) VALUES (1, 9, 1, 1);
 
 INSERT INTO wartosc_oczekiwana (id, wartosc, question_id) VALUES (1, 8, 1);
 
+INSERT INTO wydzial (id, nazwa, adres) VALUES (1, 'Wydzial Zarzadzania', 'Powstancow Warszawy');
 
+INSERT INTO kierunek (id, faculty_id, nazwa, opis) VALUES (1, 1, 'Logistyka', 'A nie wiem w sumie');
 
+INSERT INTO user_kierunek (user_id, specialization_id) VALUES (1,1);

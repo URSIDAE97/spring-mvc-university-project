@@ -22,6 +22,9 @@ public class ExpectedAnswer {
     @ManyToOne
     private Question question;
 
+    @ManyToOne
+    private Specialization specialization;
+
     public Long getId() {
         return id;
     }
@@ -45,4 +48,13 @@ public class ExpectedAnswer {
     public void setQuestion(Question question) {
         this.question = question;
     }
+
+    public Specialization getSpecialization() {
+        return specialization;
+    }
+
+    public void setSpecialization(Specialization specialization) {
+        this.specialization = specialization;
+    }
+
 }

@@ -45,6 +45,10 @@ public class User {
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;
 
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "user_kierunek", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "specialization_id"))
+	private Set<Specialization> spectializations;
+
 
 	@OneToMany(mappedBy = "user")
 	private List<UserAnswer> UserAnswers;
@@ -106,6 +110,14 @@ public class User {
 		this.roles = roles;
 	}
 
+	public Set<Specialization> getSpectializations() {
+		return spectializations;
+	}
+
+	public void setSpectializations(Set<Specialization> spectializations) {
+		this.spectializations = spectializations;
+	}
+
 	public List<UserAnswer> getUserAnswers() {
 		return UserAnswers;
 	}
@@ -113,5 +125,4 @@ public class User {
 	public void setUserAnswers(List<UserAnswer> userAnswers) {
 		UserAnswers = userAnswers;
 	}
-
 }
