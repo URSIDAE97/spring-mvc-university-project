@@ -14,11 +14,6 @@ public class Role {
 	@Column(name="role")
 	private String role;
 
-	@OneToMany(cascade = CascadeType.ALL,
-			fetch = FetchType.LAZY,
-			mappedBy = "role")
-	private Set<UserRole> userrole = new HashSet<>();
-
 	public int getId() {
 		return id;
 	}

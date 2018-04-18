@@ -39,17 +39,13 @@ public class User {
 	@Column(name = "active")
 	private int active;
 
-	@Column(name = "ankieta")
-	@NotEmpty(message = "*Wypelnij ankiete")
-	private boolean ankieta;
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Set<Role> roles;
 
-	@Column(name = "awatar")
-	private String Awatar;
-
-	@OneToMany(cascade = CascadeType.ALL,
-			fetch = FetchType.LAZY,
-			mappedBy = "user")
-	private Set<UserRole> userrole = new HashSet<>();
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "user_kierunek", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "id_kierunku"))
+	private Set<Kierunek> kierunki;
 
 	public int getId() {
 		return id;
@@ -105,5 +101,13 @@ public class User {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	public Set<Kierunek> getKierunki() {
+		return kierunki;
+	}
+
+	public void setKierunki(Set<Kierunek> kierunki) {
+		this.kierunki = kierunki;
 	}
 }
