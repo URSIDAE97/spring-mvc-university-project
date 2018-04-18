@@ -1,10 +1,10 @@
 package pl.edu.prz.kia.universityproject.repository;
 
-import pl.edu.prz.kia.universityproject.model.Kierunek;
+import pl.edu.prz.kia.universityproject.model.Pytanie;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository("kierunekRepository")
-public interface KierunekRepository extends JpaRepository<Kierunek, Integer> {
+@Repository("pytanieRepository")
+public interface PytanieRepository extends JpaRepository<Pytanie, Integer> {
 
 }

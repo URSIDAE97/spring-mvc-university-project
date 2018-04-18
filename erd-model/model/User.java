@@ -47,6 +47,9 @@ public class User {
 	@JoinTable(name = "user_kierunek", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "id_kierunku"))
 	private Set<Kierunek> kierunki;
 
+    @OneToMany(mappedBy = "userid")
+    private Set<Odpowiedz> odpowiedzi;
+
 	public int getId() {
 		return id;
 	}
@@ -103,11 +106,15 @@ public class User {
 		this.roles = roles;
 	}
 
-	public Set<Kierunek> getKierunki() {
-		return kierunki;
-	}
+	public Set<Kierunek> getKierunki() {return kierunki;}
 
 	public void setKierunki(Set<Kierunek> kierunki) {
 		this.kierunki = kierunki;
 	}
+
+    public Set<Odpowiedz> getOdpowiedzi() {return odpowiedzi;}
+
+    public void setOdpowiedzi(Set<Odpowiedz> odpowiedzi) {
+        this.odpowiedzi = odpowiedzi;
+    }
 }
