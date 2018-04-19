@@ -1,3 +1,4 @@
+# Harmonogram
 | lp. |etap|czas (h)|data rozpoczecia|data zakonczenia|
 |:---:|:--:|:------:|:--------------:|:--------------:|
 |1|Rozmowy ze studentami z Wydziału Zarządzania|4|10.03|14.03|
@@ -18,3 +19,7 @@
 |16|Implementacja wartswy prezentacji|30|20.05|25.05|
 |17|Testy warstwy prezentacji|5|25.05|26.05|
 |18|Stworzenie dokumentacji|2|26.05|27.05|
+
+## Diagram gantta
+
+![Gantt](https://github.com/rmitula/spring-mvc-university-project/blob/master/doc/Gantt.png?raw=true)
