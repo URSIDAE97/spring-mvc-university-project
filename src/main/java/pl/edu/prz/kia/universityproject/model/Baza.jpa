@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" ptype="MONOLITH" ppkg="pl.edu.prz.kia.universityproject.model" epkg="domain" v="4.8" rws="_15240778599262" Pws="_15240778599262" cws="_15240778599262" dbthm="PDarkColorScheme" persistenceUnitName="DEFAULT_PU" sm="false" xs="false" id="_15240778599251" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+    <jpa:entity compositePrimaryKeyClass="UZYTKOWNIKPK" abs="false" class="UZYTKOWNIK" v="true" jbn="false" xre="false" m="false" rootElement="_15240778599251" id="_15240778748243">
+        <jpa:ath>Krystian</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="Imie" id="_15240780015296">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="Nazwisko" id="_15240781714088">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="Mail" id="_15240781799769">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="Haslo" id="_152407818962410">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="Ankieta" id="_152407819787111">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="Awatar" id="_152407820565612">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:many-to-many collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_152408047089951" connected-attribute-id="_1524133005286437" v="true" name="KIERUNEKs" id="_1524133005286438"/>
+            <jpa:id attribute-type="Integer" v="true" xvt="" name="ID_uzytkownika" id="_15240778748614">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="UZYTKOWNIK.findAll">
+            <jpa:query>Select e from UZYTKOWNIK e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="UZYTKOWNIK.findByImie">
+            <jpa:query>Select u from UZYTKOWNIK u where u.Imie=:Imie</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="UZYTKOWNIK.findByNazwisko">
+            <jpa:query>Select u from UZYTKOWNIK u where u.Nazwisko=:Nazwisko</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="UZYTKOWNIK.findByMail">
+            <jpa:query>Select u from UZYTKOWNIK u where u.Mail=:Mail</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="UZYTKOWNIK.findByHaslo">
+            <jpa:query>Select u from UZYTKOWNIK u where u.Haslo=:Haslo</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="UZYTKOWNIK.findByAnkieta">
+            <jpa:query>Select u from UZYTKOWNIK u where u.Ankieta=:Ankieta</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="UZYTKOWNIK.findByAwatar">
+            <jpa:query>Select u from UZYTKOWNIK u where u.Awatar=:Awatar</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ROLAPK" abs="false" class="ROLA" v="true" jbn="false" xre="false" m="false" rootElement="_15240778599251" id="_152407853206321">
+        <jpa:ath>Krystian</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="Nazwa" id="_152407855466324">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:many-to-many own="true" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_15240778748243" v="true" name="UZYTKOWNIKs" id="_1524132949818337"/>
+            <jpa:id attribute-type="Long" v="true" xvt="" name="ID_roli" id="_152407853206322">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="ROLA.findAll">
+            <jpa:query>Select e from ROLA e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ROLA.findByNazwa">
+            <jpa:query>Select r from ROLA r where r.Nazwa=:Nazwa</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyType="D" compositePrimaryKeyClass="ODPOWIEDZ_UZYTKOWNIKAPK" abs="false" class="ODPOWIEDZ_UZYTKOWNIKA" v="true" jbn="false" xre="false" m="false" rootElement="_15240778599251" id="_152407963824530">
+        <jpa:ath>Krystian</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="Integer" v="true" xvt="" name="Wartosc" id="_152408016978240">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="true" connected-entity-id="_15240778748243" v="true" name="UZYTKOWNIK" id="_1524133454612924"/>
+            <jpa:many-to-one primaryKey="true" connected-entity-id="_152408071747467" v="true" name="PYTANIE" id="_1524133471210926"/>
+            <jpa:id attribute-type="Integer" v="true" xvt="" name="ID_odpowiedzi" id="_152407982185434">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="ODPOWIEDZ_UZYTKOWNIKA.findAll">
+            <jpa:query>Select e from ODPOWIEDZ_UZYTKOWNIKA e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ODPOWIEDZ_UZYTKOWNIKA.findByID_uzytkownika">
+            <jpa:query>Select o from ODPOWIEDZ_UZYTKOWNIKA o where o.ID_uzytkownika=:ID_uzytkownika</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ODPOWIEDZ_UZYTKOWNIKA.findByID_pytania">
+            <jpa:query>Select o from ODPOWIEDZ_UZYTKOWNIKA o where o.ID_pytania=:ID_pytania</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ODPOWIEDZ_UZYTKOWNIKA.findByWartosc">
+            <jpa:query>Select o from ODPOWIEDZ_UZYTKOWNIKA o where o.Wartosc=:Wartosc</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyType="D" compositePrimaryKeyClass="KIERUNEKPK" abs="false" class="KIERUNEK" v="true" jbn="false" xre="false" m="false" rootElement="_15240778599251" id="_152408047089951">
+        <jpa:ath>Krystian</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="Nazwa" id="_152408049347855">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="Opis" id="_152408049404656">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="true" connected-entity-id="_152408059302859" v="true" name="WYDZIAL" id="_1524133346060824"/>
+            <jpa:many-to-many own="true" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_15240778748243" connected-attribute-id="_1524133005286438" v="true" name="UZYTKOWNIKs" id="_1524133005286437"/>
+            <jpa:id attribute-type="Integer" v="true" xvt="" name="ID_kierunku" id="_152408047090152">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="KIERUNEK.findAll">
+            <jpa:query>Select e from KIERUNEK e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="KIERUNEK.findByID_wydzialu">
+            <jpa:query>Select k from KIERUNEK k where k.ID_wydzialu=:ID_wydzialu</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="KIERUNEK.findByNazwa">
+            <jpa:query>Select k from KIERUNEK k where k.Nazwa=:Nazwa</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="KIERUNEK.findByOpis">
+            <jpa:query>Select k from KIERUNEK k where k.Opis=:Opis</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="WYDZIALPK" abs="false" class="WYDZIAL" v="true" jbn="false" xre="false" m="false" rootElement="_15240778599251" id="_152408059302859">
+        <jpa:ath>Krystian</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="Nazwa" id="_152408060939062">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="Logo" ft="false" id="_152408060972563">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic optional="true" attribute-type="String" v="true" xvt="" name="Adres" id="_152408061003064">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:id attribute-type="Integer" v="true" xvt="" name="ID_wydzialu" id="_152408059303260">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="WYDZIAL.findAll">
+            <jpa:query>Select e from WYDZIAL e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="WYDZIAL.findByNazwa">
+            <jpa:query>Select w from WYDZIAL w where w.Nazwa=:Nazwa</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="WYDZIAL.findByLogo">
+            <jpa:query>Select w from WYDZIAL w where w.Logo=:Logo</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="WYDZIAL.findByAdres">
+            <jpa:query>Select w from WYDZIAL w where w.Adres=:Adres</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="PYTANIEPK" abs="false" class="PYTANIE" v="true" jbn="false" xre="false" m="false" rootElement="_15240778599251" id="_152408071747467">
+        <jpa:ath>Krystian</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="Tresc" id="_152408073285470">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:id attribute-type="Integer" v="true" xvt="" name="ID_pytania" id="_152408071747868">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="PYTANIE.findAll">
+            <jpa:query>Select e from PYTANIE e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="PYTANIE.findByTresc">
+            <jpa:query>Select p from PYTANIE p where p.Tresc=:Tresc</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyType="D" compositePrimaryKeyClass="WARTOSC_OCZEKIWANAPK" abs="false" class="WARTOSC_OCZEKIWANA" v="true" jbn="false" xre="false" m="false" rootElement="_15240778599251" id="_152408079473473">
+        <jpa:ath>Krystian</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="Integer" v="true" xvt="" name="Wartosc" id="_152408080462278">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="true" connected-entity-id="_152408047089951" v="true" name="KIERUNEK" id="_1524133414178919"/>
+            <jpa:many-to-one primaryKey="true" connected-entity-id="_152408071747467" v="true" name="PYTANIE" id="_1524133511667928"/>
+            <jpa:id attribute-type="Integer" v="true" xvt="" name="ID_wartosci" id="_152408079473874">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="WARTOSC_OCZEKIWANA.findAll">
+            <jpa:query>Select e from WARTOSC_OCZEKIWANA e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="WARTOSC_OCZEKIWANA.findByID_kierunku">
+            <jpa:query>Select e from WARTOSC_OCZEKIWANA e where e.ID_kierunku=:ID_kierunku</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="WARTOSC_OCZEKIWANA.findByID_pytania">
+            <jpa:query>Select e from WARTOSC_OCZEKIWANA e where e.ID_pytania=:ID_pytania</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Warto.findByWartosc">
+            <jpa:query>Select e from WARTOSC_OCZEKIWANA e where e.Wartosc=:Wartosc</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:snp loc="BEFORE_PACKAGE" e="true">/**
+ * This file was generated by the Jeddict
+ */</jpa:snp>
+    <jpa:c/>
+    <jpa:wsl>
+        <jpa:ws n="Main" id="_15240778599262">
+            <i ref="_152407853206321" x="537" y="85"/>
+            <i ref="_152408059302859" x="1023" y="593"/>
+            <i ref="_152407963824530" x="139" y="405"/>
+            <i ref="_152408047089951" x="682" y="549"/>
+            <i ref="_152408079473473" x="598" y="795"/>
+            <i ref="_15240778748243" x="217" y="33"/>
+            <i ref="_152408071747467" x="198" y="717"/>
+        </jpa:ws>
+    </jpa:wsl>
+</jpa:entity-mappings>
