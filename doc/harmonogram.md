@@ -14,7 +14,7 @@
 |11|Utworzenie diagramu FHD|2|23.04|26.04|
 |12|Utworzenie diagramu DFD|2|23.04|26.04|
 |13|Utworzenie diagramu przypadków użycia|2|23.04|26.04|
-|14|Implementacja serwisowej warstwy danych i warstwy serwisowej aplikacji|60|7.03|27.04|16.05|
+|14|Implementacja serwisowej warstwy danych i warstwy serwisowej aplikacji|60|27.04|16.05|
 |15|Testy warstwy serwisu|15|16.05|19.05|
 |16|Implementacja wartswy prezentacji|30|20.05|25.05|
 |17|Testy warstwy prezentacji|5|25.05|26.05|
