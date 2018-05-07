@@ -16,7 +16,6 @@ public class UserAnswer {
     @NotNull
     @Max(value = 10)
     @Column(name="wartosc")
-
     private Integer value;
 
     @JoinColumn (name="id_pytania")
@@ -50,6 +49,7 @@ public class UserAnswer {
     public void setQuestion(Question question) {
         this.question = question;
     }
+
     public User getUser() {
         return user;
     }
