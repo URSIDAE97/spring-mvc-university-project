@@ -4,7 +4,6 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
-
 @Entity
 @Table(name = "odpowiedz_uzytkownika")
 public class UserAnswer {

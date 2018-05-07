@@ -1,7 +1,5 @@
 package pl.edu.prz.kia.universityproject.model;
 
-import com.sun.javafx.beans.IDProperty;
-
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
