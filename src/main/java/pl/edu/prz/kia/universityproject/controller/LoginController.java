@@ -52,7 +52,7 @@ public class LoginController {
 			userService.saveUser(user);
 			modelAndView.addObject("successMessage", "Zostales pomyslnie zarejestrowany.");
 			modelAndView.addObject("user", new User());
-			modelAndView.setViewName("registration");
+			modelAndView.setViewName("login");
 			
 		}
 		return modelAndView;

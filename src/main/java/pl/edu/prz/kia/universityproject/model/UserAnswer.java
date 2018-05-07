@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 public class UserAnswer {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name="id_odpowiedzi_uzytkownika")
     private Long id;
 
@@ -20,11 +20,11 @@ public class UserAnswer {
     private Integer value;
 
     @JoinColumn (name="id_pytania")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Question question;
 
     @JoinColumn (name="id_uzytkownika")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private User user;
 
     public Long getId() {

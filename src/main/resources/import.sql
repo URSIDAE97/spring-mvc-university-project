@@ -18,15 +18,11 @@ INSERT INTO kierunek (id_kierunku, id_wydzialu, nazwa, opis) VALUES (1, 1, 'Logi
 INSERT INTO kierunek (id_kierunku, id_wydzialu, nazwa, opis) VALUES (2, 2, 'Informatyka', 'Porządny kierunek');
 INSERT INTO kierunek (id_kierunku, id_wydzialu, nazwa, opis) VALUES (3, 2, 'Energetyka', 'Też spoko');
 
-
-
 INSERT INTO uzytkownik_kierunek (id_uzytkownika, id_kierunku) VALUES (1,1);
-
 
 INSERT INTO pytanie (id_pytania , tresc) VALUES (1, 'Ddziała?');
 INSERT INTO pytanie (id_pytania , tresc) VALUES (2, 'Ale dobrze ddziała?');
 INSERT INTO pytanie (id_pytania , tresc) VALUES (3, 'Na pewno?');
-
 
 INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (1, 9, 1, 1);
 INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (2, 10, 2, 1);

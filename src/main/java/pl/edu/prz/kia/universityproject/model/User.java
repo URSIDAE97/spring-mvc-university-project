@@ -16,7 +16,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_uzytkownika")
-	private int id;
+	private Long id;
 
 	@Column(name = "email")
 	@Email(message = "*Podaj poprawny adres email")
@@ -54,11 +54,11 @@ public class User {
 	private List<UserAnswer> UserAnswers;
 
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
