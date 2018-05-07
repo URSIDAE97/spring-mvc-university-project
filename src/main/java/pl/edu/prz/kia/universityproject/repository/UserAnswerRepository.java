@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import pl.edu.prz.kia.universityproject.model.Question;
 
 @Repository
-public interface UserAnswerRepository extends JpaRepository<Question, Long> {
+public interface UserAnswerRepository extends JpaRepository<UserAnswer, Long> {
 }
