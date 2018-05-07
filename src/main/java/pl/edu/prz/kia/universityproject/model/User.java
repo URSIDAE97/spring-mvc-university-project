@@ -6,15 +6,16 @@ import org.springframework.data.annotation.Transient;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name = "uzytkownik")
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "user_id")
+	@Column(name = "id_uzytkownika")
 	private int id;
 
 	@Column(name = "email")
@@ -22,26 +23,36 @@ public class User {
 	@NotEmpty(message = "*Podaj email")
 	private String email;
 
-	@Column(name = "password")
+	@Column(name = "haslo")
 	@Length(min = 5, message = "*Haslo musi posiadac conajmniej 5 znakow")
 	@NotEmpty(message = "*Podaj haslo")
 	@Transient
 	private String password;
 
-	@Column(name = "name")
+	@Column(name = "imie")
 	@NotEmpty(message = "*Podaj imie")
 	private String name;
 
-	@Column(name = "last_name")
+	@Column(name = "nazwisko")
 	@NotEmpty(message = "*Podaj nazwisko")
 	private String lastName;
+
 
 	@Column(name = "active")
 	private int active;
 
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	@JoinTable(name = "uzytkownik_rola", joinColumns = @JoinColumn(name = "id_uzytkownika"), inverseJoinColumns = @JoinColumn(name = "id_roli"))
 	private Set<Role> roles;
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "uzytkownik_kierunek", joinColumns = @JoinColumn(name = "id_uzytkownika"), inverseJoinColumns = @JoinColumn(name = "id_kierunku"))
+	private Set<Specialization> spectializations;
+
+
+	@OneToMany(mappedBy = "user")
+	private List<UserAnswer> UserAnswers;
+
 
 	public int getId() {
 		return id;
@@ -97,5 +108,21 @@ public class User {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	public Set<Specialization> getSpectializations() {
+		return spectializations;
+	}
+
+	public void setSpectializations(Set<Specialization> spectializations) {
+		this.spectializations = spectializations;
+	}
+
+	public List<UserAnswer> getUserAnswers() {
+		return UserAnswers;
+	}
+
+	public void setUserAnswers(List<UserAnswer> userAnswers) {
+		UserAnswers = userAnswers;
 	}
 }
