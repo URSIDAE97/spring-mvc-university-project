@@ -10,6 +10,7 @@ public class Specialization {
 
     @Id
     @GeneratedValue
+    @Column(name="id_kierunku")
     private Long id;
 
     @NotNull
@@ -20,6 +21,7 @@ public class Specialization {
     @Column(name = "opis")
     private String description;
 
+    @JoinColumn(name = "id_wydzialu")
     @ManyToOne
     private Faculty faculty;
 

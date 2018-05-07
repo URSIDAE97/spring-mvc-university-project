@@ -10,6 +10,7 @@ public class Question {
 
     @Id
     @GeneratedValue
+    @Column (name="id_pytania")
     private Long id;
 
     @NotNull

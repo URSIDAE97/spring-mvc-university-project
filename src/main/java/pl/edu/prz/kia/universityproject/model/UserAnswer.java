@@ -11,6 +11,7 @@ public class UserAnswer {
 
     @Id
     @GeneratedValue
+    @Column (name="id_odpowiedzi_uzytkownika")
     private Long id;
 
     @NotNull
@@ -19,9 +20,11 @@ public class UserAnswer {
 
     private Integer value;
 
+    @JoinColumn (name="id_pytania")
     @ManyToOne
     private Question question;
 
+    @JoinColumn (name="id_uzytkownika")
     @ManyToOne
     private User user;
 

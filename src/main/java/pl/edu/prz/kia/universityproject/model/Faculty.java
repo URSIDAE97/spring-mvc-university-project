@@ -10,6 +10,7 @@ public class Faculty {
 
     @Id
     @GeneratedValue
+    @Column (name="id_wydzialu")
     private Long id;
 
     @NotNull

@@ -3,15 +3,15 @@ package pl.edu.prz.kia.universityproject.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "role")
+@Table(name = "rola")
 public class Role {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="role_id")
+	@Column(name="id_roli")
 	private int id;
 
-	@Column(name="role")
+	@Column(name="rola")
 	private String role;
 
 	public int getId() {
