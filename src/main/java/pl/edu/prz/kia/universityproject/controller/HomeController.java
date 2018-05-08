@@ -18,12 +18,6 @@ public class HomeController {
     FacultyService facultyService;
     @Autowired
     SpecializationService specializationService;
-    @Autowired
-    public HomeController() {
-        this.facultyService = facultyService;
-        this.specializationService = specializationService;
-    }
-
     @GetMapping(value="/")
     public ModelAndView index(){
         ModelAndView modelAndView = new ModelAndView();
