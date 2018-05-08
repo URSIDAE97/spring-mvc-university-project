@@ -55,8 +55,13 @@
                 <table class="table">
                     <tbody>
                     <tr th:each="answer : ${answers}">
-                        <th scope="row">1</th>
-                        <td>Treść pytania leci tutaj</td>
+                        <th scope="row" ></th>
+                        <div th:each="question: ${questions}">
+                        <div th:if = "(${answer.question.id} == ${question.id}) == true ">
+                            <td ><h5 th:text = "${question.id}"></h5></td>
+                            <td th:text = "${question.question}"></td>
+                        </div>
+                        </div>
                         <td>
                             <input type="text" id="datePlanted" name="datePlanted" th:value="${answer.value}" />
                         </td>
