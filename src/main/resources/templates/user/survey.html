@@ -52,24 +52,7 @@
 
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
             <form action="#" th:action="@{/survey}" th:object="${model}" method="post">
-                <!--<table>-->
-                    <!--<div th:each="answer : ${answers}">-->
-                        <!--<p>Tu nazwe pytania</p>-->
-                        <!--<input type="text" id="datePlanted" name="datePlanted" th:value="${answer.value}" />-->
-                    <!--</div>-->
-                <!--</table>-->
-
-
                 <table class="table">
-                    <!--<thead>-->
-                    <!--<tr>-->
-                        <!--<th scope="col"></th>-->
-                        <!--<th scope="col">First</th>-->
-                        <!--<th scope="col">Last</th>-->
-                        <!--<th scope="col">Handle</th>-->
-                    <!--</tr>-->
-                    <!--</thead>-->
-                    <!---->
                     <tbody>
                     <tr th:each="answer : ${answers}">
                         <th scope="row">1</th>
