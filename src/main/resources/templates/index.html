@@ -64,17 +64,19 @@
                     <div class="card" th:each="faculty : ${faculties}">
                         <div class="card-header" th:id="${faculty.name}">
                             <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
-                                        aria-expanded="true" th:attr="aria-controls='collapse' + ${faculty.id}"
+                                <button class="btn btn-link" data-toggle="collapse"
+                                        aria-expanded="false"
+                                        th:attr="aria-controls='collapse' + ${faculty.id}, data-target='#collapse' + ${faculty.id}"
                                         th:text="${faculty.name} + ':   ' + ${faculty.address}">
 
                                 </button>
                             </h5>
 
                         </div>
-                        <div class="card-body">
-                            <div th:attr="id='collapse' + ${faculty.id}" class="collapse show"
-                                 aria-labelledby="headingOne" data-parent="#accordion">
+
+                        <div th:attr="id='collapse' + ${faculty.id}" class="collapse"
+                             aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
                                 <div th:each="spec : ${specs}">
                                     <h6 th:text="(${spec.faculty.id} eq ${faculty.id}) ? ('    ' + ${spec.name})"></h6>
                                 </div>
