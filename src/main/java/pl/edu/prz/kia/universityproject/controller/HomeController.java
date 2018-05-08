@@ -19,7 +19,7 @@ public class HomeController {
     @Autowired
     SpecializationService specializationService;
     @Autowired
-    public HomeController(FacultyService facultyService, SpecializationService specializationService) {
+    public HomeController() {
         this.facultyService = facultyService;
         this.specializationService = specializationService;
     }
