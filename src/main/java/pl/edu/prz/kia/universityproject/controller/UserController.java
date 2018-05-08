@@ -6,8 +6,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
+import pl.edu.prz.kia.universityproject.model.Question;
 import pl.edu.prz.kia.universityproject.model.User;
 import pl.edu.prz.kia.universityproject.model.UserAnswer;
+import pl.edu.prz.kia.universityproject.service.QuestionService;
 import pl.edu.prz.kia.universityproject.service.UserAnswerService;
 import pl.edu.prz.kia.universityproject.service.UserService;
 
@@ -18,6 +20,8 @@ public class UserController {
 
     private UserService userService;
     private UserAnswerService userAnswerService;
+    @Autowired
+    private QuestionService questionService;
 
     @Autowired
     public UserController(UserService userService, UserAnswerService userAnswerService) {
@@ -46,6 +50,11 @@ public class UserController {
 
         List<UserAnswer> userAnswers = userAnswerService.findByUser(user);
         modelAndView.addObject("answers", userAnswers);
+
+        // -------
+
+        List<Question> questions = questionService.findAll();
+        modelAndView.addObject("questions", questions);
 
         // -------
 
