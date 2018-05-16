@@ -69,17 +69,17 @@
                     <tbody>
                     <tr th:each="answer, rowStat : ${wrapper.answerList}">
                         <td><p th:text="${answer.question.question}"></p></td>
-                        <td><input type=""
+                        <td><input type="hidden"
                                    th:field="*{answerList[__${rowStat.index}__].id}"
                                    th:value="*{answerList[__${rowStat.index}__].getId()}"
                                    readonly="readonly"/>
                         </td>
-                        <td><input type="text"
+                        <td><input type="hidden"
                                    th:field="*{answerList[__${rowStat.index}__].user.id}"
                                    th:value="*{answerList[__${rowStat.index}__].getUser().getId()}"
                                    readonly="readonly"/>
                         </td>
-                        <td><input type="text"
+                        <td><input type="hidden"
                                    th:field="*{answerList[__${rowStat.index}__].question.id}"
                                    th:value="*{answerList[__${rowStat.index}__].getQuestion().getId()}"
                                    readonly="readonly"/>
