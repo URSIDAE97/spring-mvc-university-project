@@ -7,6 +7,7 @@ import pl.edu.prz.kia.universityproject.model.User;
 import pl.edu.prz.kia.universityproject.model.UserAnswer;
 import pl.edu.prz.kia.universityproject.repository.UserAnswerRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -31,5 +32,9 @@ public class UserAnswerService {
 
     public List<UserAnswer> findByUser(User user) {
         return userAnswerRepository.findAllByUser(user);
+    }
+
+    public List<UserAnswer> findAll() {
+        return userAnswerRepository.findAll();
     }
 }

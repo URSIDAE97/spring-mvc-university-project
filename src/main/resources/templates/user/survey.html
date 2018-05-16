@@ -4,17 +4,25 @@
 
 <head>
     <title>Page</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="header">
     <div class="container">
         <a class="navbar-brand" href="#">Kierunki PRZ</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
@@ -39,7 +47,8 @@
                 <a th:href="@{/logout}" class="btn btn-outline-danger" role="button" aria-pressed="true">Wyloguj</a>
             </div>
             <div sec:authorize="hasAuthority('ADMIN')">
-                <a th:href="@{/admin/home}" class="ml-1 btn btn-danger" role="button" aria-pressed="true">Admin Panel</a>
+                <a th:href="@{/admin/home}" class="ml-1 btn btn-danger" role="button" aria-pressed="true">Admin
+                    Panel</a>
             </div>
         </div>
     </div>
@@ -51,25 +60,39 @@
             <h2>Wypełnij ankietę:</h2>
 
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            <form action="#" th:action="@{/survey}" th:object="${model}" method="post">
+            <form action="#" th:action="@{/user/survey}" th:object="${wrapper}" method="post">
                 <table class="table">
+
+                    <th scope="row"></th>
+                    <td><h5 th:text="${stat}"></h5></td>
+
                     <tbody>
-                    <tr th:each="answer : ${answers}">
-                        <th scope="row" ></th>
-                        <div th:each="question: ${questions}">
-                        <div th:if = "(${answer.question.id} == ${question.id}) == true ">
-                            <td ><h5 th:text = "${question.id}"></h5></td>
-                            <td th:text = "${question.question}"></td>
-                        </div>
-                        </div>
-                        <td>
-                            <input type="text" id="datePlanted" name="datePlanted" th:value="${answer.value}" />
+                    <tr th:each="answer, rowStat : ${wrapper.answerList}">
+                        <td><p th:text="${answer.question.question}"></p></td>
+                        <td><input type=""
+                                   th:field="*{answerList[__${rowStat.index}__].id}"
+                                   th:value="*{answerList[__${rowStat.index}__].getId()}"
+                                   readonly="readonly"/>
                         </td>
-                    </tr>
-                    </tbody>
+                        <td><input type="text"
+                                   th:field="*{answerList[__${rowStat.index}__].user.id}"
+                                   th:value="*{answerList[__${rowStat.index}__].getUser().getId()}"
+                                   readonly="readonly"/>
+                        </td>
+                        <td><input type="text"
+                                   th:field="*{answerList[__${rowStat.index}__].question.id}"
+                                   th:value="*{answerList[__${rowStat.index}__].getQuestion().getId()}"
+                                   readonly="readonly"/>
+                        </td>
+                        <td><input type="text"
+                                   th:field="*{answerList[__${rowStat.index}__].value}"
+                                   th:value="*{answerList[__${rowStat.index}__].getValue()}"/>
+                        </td>
+                        </td>
+                        </tr>
+                        </tbody>
                 </table>
-
-
+                <button type="submit">SUBMIT</button>
             </form>
         </div>
     </div>
