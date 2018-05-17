@@ -49,20 +49,8 @@ public class UserController {
 
     @PostMapping(path="/user/survey")
     public String surveyUpdate(@ModelAttribute("wrapper") UserAnswersWrapper wrapper) {
-        ModelAndView modelAndView = new ModelAndView();
-       for(UserAnswer userAnswer : wrapper.getAnswerList()) {
-           //userAnswerService.update(userAnswer.getId(), userAnswer.getQuestion(), userAnswer.getValue(), userAnswer.getUser().getId());
-           System.out.println(userAnswer.getId());
-           System.out.println(userAnswer.getQuestion().getId());
-           System.out.println(userAnswer.getUser().getId());
-           System.out.println(userAnswer.getValue());
-
-
-        }
-        System.out.println(wrapper.getAnswerList());
-        //modelAndView.setViewName("user/home");
-       // model.addAttribute("wrapper", wrapper);
-        return "user/survey";
+        wrapper.getAnswerList().forEach(userAnswer -> userAnswerService.update(userAnswer));
+        return "redirect:home";
     }
 
 

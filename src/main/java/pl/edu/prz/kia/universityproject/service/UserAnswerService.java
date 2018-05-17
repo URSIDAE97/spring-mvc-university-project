@@ -37,4 +37,10 @@ public class UserAnswerService {
     public List<UserAnswer> findAll() {
         return userAnswerRepository.findAll();
     }
+
+    public void update(UserAnswer userAnswer) {
+        UserAnswer current = userAnswerRepository.getOne(userAnswer.getId());
+        current.setValue(userAnswer.getValue());
+        userAnswerRepository.save(current);
+    }
 }

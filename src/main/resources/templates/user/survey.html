@@ -62,10 +62,6 @@
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
             <form action="#" th:action="@{/user/survey}" th:object="${wrapper}" method="post">
                 <table class="table">
-
-                    <th scope="row"></th>
-                    <td><h5 th:text="${stat}"></h5></td>
-
                     <tbody>
                     <tr th:each="answer, rowStat : ${wrapper.answerList}">
                         <td><p th:text="${answer.question.question}"></p></td>
@@ -88,11 +84,10 @@
                                    th:field="*{answerList[__${rowStat.index}__].value}"
                                    th:value="*{answerList[__${rowStat.index}__].getValue()}"/>
                         </td>
-                        </td>
                         </tr>
                         </tbody>
                 </table>
-                <button type="submit">SUBMIT</button>
+                <button type="submit" class="btn btn-success btn-lg">Zapisz</button>
             </form>
         </div>
     </div>
