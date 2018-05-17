@@ -18,8 +18,9 @@ public class HomeController {
     FacultyService facultyService;
     @Autowired
     SpecializationService specializationService;
-    @GetMapping(value="/")
-    public ModelAndView index(){
+
+    @GetMapping(value = "/")
+    public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView();
         List<Faculty> faculties = facultyService.findAll();
         List<Specialization> specializations = specializationService.findAll();

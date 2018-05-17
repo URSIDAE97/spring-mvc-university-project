@@ -1,19 +1,27 @@
 package pl.edu.prz.kia.universityproject.controller;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.bind.BindResult;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import pl.edu.prz.kia.universityproject.model.Question;
 import pl.edu.prz.kia.universityproject.model.User;
 import pl.edu.prz.kia.universityproject.model.UserAnswer;
+import pl.edu.prz.kia.universityproject.model.UserAnswersWrapper;
 import pl.edu.prz.kia.universityproject.service.QuestionService;
 import pl.edu.prz.kia.universityproject.service.UserAnswerService;
 import pl.edu.prz.kia.universityproject.service.UserService;
 
 import java.util.List;
+import java.util.logging.Logger;
+
 
 @Controller
 public class UserController {
@@ -39,6 +47,13 @@ public class UserController {
         return modelAndView;
     }
 
+    @PostMapping(path="/user/survey")
+    public String surveyUpdate(@ModelAttribute("wrapper") UserAnswersWrapper wrapper) {
+        wrapper.getAnswerList().forEach(userAnswer -> userAnswerService.update(userAnswer));
+        return "redirect:home";
+    }
+
+
     @GetMapping(value = "/user/survey")
     public ModelAndView userSurvey() {
         ModelAndView modelAndView = new ModelAndView();
@@ -46,10 +61,15 @@ public class UserController {
         User user = userService.findUserByEmail(auth.getName());
         modelAndView.addObject("user", user);
 
+        //-------
+
+        UserAnswersWrapper wrapper = new UserAnswersWrapper(userAnswerService.findByUser(user));
+        modelAndView.addObject("wrapper", wrapper);
+
         // -------
 
         List<UserAnswer> userAnswers = userAnswerService.findByUser(user);
-        modelAndView.addObject("answers", userAnswers);
+        modelAndView.addObject("userAnswers", userAnswers);
 
         // -------
 
@@ -61,4 +81,5 @@ public class UserController {
         modelAndView.setViewName("user/survey");
         return modelAndView;
     }
+
 }
