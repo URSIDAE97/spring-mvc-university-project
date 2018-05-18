@@ -57,16 +57,29 @@
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-8">
-            <h2>Kierunki ktore powinny Ci odpowiadac:</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action active">
-                    Cras justo odio
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-                <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+
+
+
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <p>
+                    <strong>Nie uzupełniłeś jeszcze ankiety! </strong> Po uzupełnieniu ankiety wyświetlimy Ci listę kierunków na które się nadajesz!
+                </p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <a class="btn btn-outline-success btn-lg" th:href="@{/user/survey}" role="button">Rozpocznij ankietę</a>
             </div>
+
+
+            <h2>Kierunki wybrane dla Ciebie</h2>
+            <p>Kierunki, które zostały przyporzadkowane na podstawie ankiety.</p>
+            <ul class="list-group">
+                <li class="list-group-item">todo</li>
+                <li class="list-group-item">...</li>
+                <li class="list-group-item">...</li>
+                <li class="list-group-item">...</li>
+                <li class="list-group-item">...</li>
+            </ul>
         </div>
         <div class="col-md-4">
             <h4>Twoje dane</h4>
