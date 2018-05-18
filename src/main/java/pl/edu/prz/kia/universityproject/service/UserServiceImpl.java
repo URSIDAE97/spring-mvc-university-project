@@ -37,6 +37,7 @@ public class UserServiceImpl implements UserService {
     public void saveUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(1);
+        user.setSurvey(false);
         Role userRole = roleRepository.findByRole("USER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 
@@ -70,9 +71,12 @@ public class UserServiceImpl implements UserService {
         results.remove(results.firstKey());
         Specialization spec3 = results.get(results.firstKey());
         results.remove(results.firstKey());
+        if(user.didSurvey() == true)
+        	user.getSpecializations().clear();
         user.getSpecializations().add(spec1);
         user.getSpecializations().add(spec2);
         user.getSpecializations().add(spec3);
+        user.setSurvey(true);
         userRepository.save(user);
     }
 

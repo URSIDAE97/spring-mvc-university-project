@@ -40,6 +40,9 @@ public class User {
 
 	@Column(name = "active")
 	private int active;
+	
+	@Column(name = "ankieta")
+	private boolean survey;
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "uzytkownik_rola", joinColumns = @JoinColumn(name = "id_uzytkownika"), inverseJoinColumns = @JoinColumn(name = "id_roli"))
@@ -125,4 +128,13 @@ public class User {
 	public void setUserAnswers(List<UserAnswer> userAnswers) {
 		UserAnswers = userAnswers;
 	}
+	
+	public Boolean didSurvey() {
+		return survey;
+	}
+	
+	public void setSurvey(boolean survey) {
+		this.survey = survey;
+	}
+
 }
