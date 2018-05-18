@@ -80,9 +80,9 @@
                                    th:value="*{answerList[__${rowStat.index}__].getQuestion().getId()}"
                                    readonly="readonly"/>
                         </td>
-                        <td><input type="text"
+                        <td>0<input type="range" min="1" max="10" value="5"
                                    th:field="*{answerList[__${rowStat.index}__].value}"
-                                   th:value="*{answerList[__${rowStat.index}__].getValue()}"/>
+                                   th:value="*{answerList[__${rowStat.index}__].getValue()}"/>10
                         </td>
                         </tr>
                         </tbody>
