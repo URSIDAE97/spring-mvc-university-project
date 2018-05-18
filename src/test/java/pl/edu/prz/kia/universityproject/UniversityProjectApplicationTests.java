@@ -1,5 +1,7 @@
 package pl.edu.prz.kia.universityproject;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,6 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.servlet.ModelAndView;
 import pl.edu.prz.kia.universityproject.controller.HomeController;
 import pl.edu.prz.kia.universityproject.controller.LoginController;
+import pl.edu.prz.kia.universityproject.model.Specialization;
 import pl.edu.prz.kia.universityproject.model.User;
 import pl.edu.prz.kia.universityproject.service.UserService;
 
@@ -26,6 +29,11 @@ public class UniversityProjectApplicationTests {
 			@Override
 			public void saveUser(User user) {
 
+			}
+			
+			@Override
+			public void calculateSurveyResults(List<Specialization> specializations, User user) {
+			
 			}
 		};
 		//HomeController homeController = new HomeController();

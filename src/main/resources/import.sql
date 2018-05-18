@@ -50,7 +50,6 @@ INSERT INTO kierunek (id_kierunku, id_wydzialu, nazwa, opis) VALUES (27, 7, 'Zar
 
 
 
-INSERT INTO uzytkownik_kierunek (id_uzytkownika, id_kierunku) VALUES (1,1);
 
 INSERT INTO pytanie (id_pytania , tresc) VALUES (1, 'Jak oceniasz swoje umiejetnosci dogadywania sie z ludzmi?');
 INSERT INTO pytanie (id_pytania , tresc) VALUES (2, 'Twoim zdaniem umiejetnosci miekkie sa wazniejsze?');
@@ -97,15 +96,23 @@ INSERT INTO pytanie (id_pytania , tresc) VALUES (41, 'Twoim zdaniem posiadasz do
 
 INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (1, 9, 1, 1);
 INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (2, 10, 2, 1);
-INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (3, 5, 3, 2);
-INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (4, 2, 2, 2);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (3, 5, 3, 1);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (4, 3, 1, 2);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (5, 7, 2, 2);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (6, 8, 3, 2);
 
 INSERT INTO wartosc_oczekiwana (id_wartosci_oczekiwanej, wartosc, id_pytania, id_kierunku) VALUES (1, 8, 1,1);
 INSERT INTO wartosc_oczekiwana (id_wartosci_oczekiwanej, wartosc, id_pytania, id_kierunku) VALUES (2, 9, 2,1);
 INSERT INTO wartosc_oczekiwana (id_wartosci_oczekiwanej, wartosc, id_pytania, id_kierunku) VALUES (3, 7, 3,1);
-INSERT INTO wartosc_oczekiwana (id_wartosci_oczekiwanej, wartosc, id_pytania, id_kierunku) VALUES (4, 7, 1,2);
-INSERT INTO wartosc_oczekiwana (id_wartosci_oczekiwanej, wartosc, id_pytania, id_kierunku) VALUES (5, 8, 2,2);
-INSERT INTO wartosc_oczekiwana (id_wartosci_oczekiwanej, wartosc, id_pytania, id_kierunku) VALUES (6, 9, 3,2);
+INSERT INTO wartosc_oczekiwana (id_wartosci_oczekiwanej, wartosc, id_pytania, id_kierunku) VALUES (4, 9, 1,2);
+INSERT INTO wartosc_oczekiwana (id_wartosci_oczekiwanej, wartosc, id_pytania, id_kierunku) VALUES (5, 10, 2,2);
+INSERT INTO wartosc_oczekiwana (id_wartosci_oczekiwanej, wartosc, id_pytania, id_kierunku) VALUES (6, 5, 3,2);
+INSERT INTO wartosc_oczekiwana (id_wartosci_oczekiwanej, wartosc, id_pytania, id_kierunku) VALUES (7, 3, 1,3);
+INSERT INTO wartosc_oczekiwana (id_wartosci_oczekiwanej, wartosc, id_pytania, id_kierunku) VALUES (8, 9, 2,3);
+INSERT INTO wartosc_oczekiwana (id_wartosci_oczekiwanej, wartosc, id_pytania, id_kierunku) VALUES (9, 6, 3,3);
+INSERT INTO wartosc_oczekiwana (id_wartosci_oczekiwanej, wartosc, id_pytania, id_kierunku) VALUES (10, 9, 1,4);
+INSERT INTO wartosc_oczekiwana (id_wartosci_oczekiwanej, wartosc, id_pytania, id_kierunku) VALUES (11, 10, 2,4);
+INSERT INTO wartosc_oczekiwana (id_wartosci_oczekiwanej, wartosc, id_pytania, id_kierunku) VALUES (12, 4, 3,4);
 
 
 

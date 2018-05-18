@@ -47,7 +47,7 @@ public class User {
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "uzytkownik_kierunek", joinColumns = @JoinColumn(name = "id_uzytkownika"), inverseJoinColumns = @JoinColumn(name = "id_kierunku"))
-	private Set<Specialization> spectializations;
+	private Set<Specialization> specializations;
 
 
 	@OneToMany(mappedBy = "user")
@@ -110,12 +110,12 @@ public class User {
 		this.roles = roles;
 	}
 
-	public Set<Specialization> getSpectializations() {
-		return spectializations;
+	public Set<Specialization> getSpecializations() {
+		return specializations;
 	}
 
-	public void setSpectializations(Set<Specialization> spectializations) {
-		this.spectializations = spectializations;
+	public void setSpectializations(Set<Specialization> specializations) {
+		this.specializations = specializations;
 	}
 
 	public List<UserAnswer> getUserAnswers() {
