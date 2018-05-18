@@ -16,6 +16,7 @@ import pl.edu.prz.kia.universityproject.model.User;
 import pl.edu.prz.kia.universityproject.model.UserAnswer;
 import pl.edu.prz.kia.universityproject.model.UserAnswersWrapper;
 import pl.edu.prz.kia.universityproject.service.QuestionService;
+import pl.edu.prz.kia.universityproject.service.SpecializationService;
 import pl.edu.prz.kia.universityproject.service.UserAnswerService;
 import pl.edu.prz.kia.universityproject.service.UserService;
 
@@ -30,6 +31,8 @@ public class UserController {
     private UserAnswerService userAnswerService;
     @Autowired
     private QuestionService questionService;
+    @Autowired
+    private SpecializationService specializationService;
 
     @Autowired
     public UserController(UserService userService, UserAnswerService userAnswerService) {
@@ -50,6 +53,9 @@ public class UserController {
     @PostMapping(path="/user/survey")
     public String surveyUpdate(@ModelAttribute("wrapper") UserAnswersWrapper wrapper) {
         wrapper.getAnswerList().forEach(userAnswer -> userAnswerService.update(userAnswer));
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        userService.calculateSurveyResults(specializationService.findAll(), user);
         return "redirect:home";
     }
 

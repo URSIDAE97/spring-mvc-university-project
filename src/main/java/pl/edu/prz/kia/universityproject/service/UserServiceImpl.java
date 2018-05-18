@@ -1,17 +1,14 @@
 package pl.edu.prz.kia.universityproject.service;
 
-import pl.edu.prz.kia.universityproject.model.Question;
-import pl.edu.prz.kia.universityproject.model.Role;
-import pl.edu.prz.kia.universityproject.model.User;
+import pl.edu.prz.kia.universityproject.model.*;
 import pl.edu.prz.kia.universityproject.repository.RoleRepository;
 import pl.edu.prz.kia.universityproject.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import java.lang.Math;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
@@ -40,6 +37,7 @@ public class UserServiceImpl implements UserService {
     public void saveUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(1);
+        user.setSurvey(false);
         Role userRole = roleRepository.findByRole("USER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 
@@ -50,6 +48,35 @@ public class UserServiceImpl implements UserService {
 
         // ------
 
+        userRepository.save(user);
+    }
+
+    @Override
+    public void calculateSurveyResults(List<Specialization> specializations, User user)
+    {
+        TreeMap<Integer, Specialization> results = new TreeMap<>();
+        for(Specialization spec : specializations) {
+            int sum = 0;
+            List<ExpectedAnswer> expectedAnswers = spec.getExpectedAnswers();
+            List<UserAnswer> userAnswers = user.getUserAnswers();
+            int arrayLength = expectedAnswers.size();
+            for (int i = 0; i < arrayLength; i++) {
+                sum += Math.abs(userAnswers.get(i).getValue() - expectedAnswers.get(i).getValue());
+            }
+            results.put(sum, spec);
+        }
+        Specialization spec1 = results.get(results.firstKey());
+        results.remove(results.firstKey());
+        Specialization spec2 = results.get(results.firstKey());
+        results.remove(results.firstKey());
+        Specialization spec3 = results.get(results.firstKey());
+        results.remove(results.firstKey());
+        if(user.didSurvey() == true)
+        	user.getSpecializations().clear();
+        user.getSpecializations().add(spec1);
+        user.getSpecializations().add(spec2);
+        user.getSpecializations().add(spec3);
+        user.setSurvey(true);
         userRepository.save(user);
     }
 
