@@ -22,9 +22,3 @@ Aplikacja powinna być dostępna na: localhost:8080
 * IntelliJ IDEA
 * Java 8
 
-## Testowe dane logowania
-
-email | hasło  | rola
------------- | ------------- | ----
-user@user | password | user
-admin@admin | password | admin
