@@ -16,6 +16,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    function sliderChange(value, id) {
+            document.getElementById('slider'+id).innerHTML = value;
+        }
+    </script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="header">
@@ -80,9 +85,10 @@
                                    th:value="*{answerList[__${rowStat.index}__].getQuestion().getId()}"
                                    readonly="readonly"/>
                         </td>
-                        <td>0<input type="range" min="1" max="10" value="5"
+                        <td align="center">0<input type="range" min="0" max="10" value="5" th:attr="id='Status' + ${rowStat.count}" onchange="sliderChange(this.value, this.id)"
                                    th:field="*{answerList[__${rowStat.index}__].value}"
-                                   th:value="*{answerList[__${rowStat.index}__].getValue()}"/>10
+                                   th:value="*{answerList[__${rowStat.index}__].getValue()}"/>10 <br /> <span th:attr="id='sliderStatus' + ${rowStat.count}">0</span>
+
                         </td>
                         </tr>
                         </tbody>
