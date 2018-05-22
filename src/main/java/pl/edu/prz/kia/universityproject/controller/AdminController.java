@@ -5,8 +5,13 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import pl.edu.prz.kia.universityproject.model.User;
+import pl.edu.prz.kia.universityproject.service.RoleService;
+import pl.edu.prz.kia.universityproject.service.UserAnswerService;
 import pl.edu.prz.kia.universityproject.service.UserService;
 import pl.edu.prz.kia.universityproject.service.UserServiceImpl;
 
@@ -17,6 +22,8 @@ import java.util.List;
 public class AdminController {
 
     private UserService userService;
+    private RoleService roleService;
+    private UserAnswerService userAnswerService;
 
     @Autowired
     public AdminController(UserService userService) {
@@ -41,7 +48,15 @@ public class AdminController {
         User user = userService.findUserByEmail(auth.getName());
         List <User> users = userService.findAll();
         modelAndView.addObject("users", users);
+        modelAndView.addObject("user", user);
         modelAndView.setViewName("admin/userList");
         return modelAndView;
+    }
+
+    @GetMapping(value="/admin/delete")
+    public String adminUserDelete(@RequestParam(name="userId")Long userId) {
+        System.out.println(userId);
+        userService.deleteUser(userId);
+        return "redirect:userList";
     }
 }

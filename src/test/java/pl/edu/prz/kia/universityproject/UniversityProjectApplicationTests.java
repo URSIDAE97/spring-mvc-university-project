@@ -42,6 +42,10 @@ public class UniversityProjectApplicationTests {
 			public List<User> findAll() {
 				return null;
 			}
+
+			@Override
+			public void deleteUser(Long userId) {
+			}
 		};
 		//HomeController homeController = new HomeController();
 		LoginController loginController = new LoginController(mockUserService);

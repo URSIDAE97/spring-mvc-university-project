@@ -10,4 +10,5 @@ public interface UserService {
 	void saveUser(User user);
 	void calculateSurveyResults(List<Specialization> specializations, User user);
 	List<User> findAll();
+	void deleteUser(Long userId);
 }

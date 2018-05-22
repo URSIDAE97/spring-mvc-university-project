@@ -44,11 +44,11 @@ public class User {
 	@Column(name = "ankieta")
 	private boolean survey;
 
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "uzytkownik_rola", joinColumns = @JoinColumn(name = "id_uzytkownika"), inverseJoinColumns = @JoinColumn(name = "id_roli"))
 	private Set<Role> roles;
 
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "uzytkownik_kierunek", joinColumns = @JoinColumn(name = "id_uzytkownika"), inverseJoinColumns = @JoinColumn(name = "id_kierunku"))
 	private Set<Specialization> specializations;
 
