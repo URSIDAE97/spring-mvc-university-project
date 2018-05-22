@@ -8,6 +8,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
 import java.util.Set;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "uzytkownik")
@@ -54,6 +56,7 @@ public class User {
 
 
 	@OneToMany(mappedBy = "user")
+        @OnDelete(action = OnDeleteAction.CASCADE)
 	private List<UserAnswer> UserAnswers;
 
 
