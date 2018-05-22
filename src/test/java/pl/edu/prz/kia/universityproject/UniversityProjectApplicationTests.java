@@ -29,6 +29,11 @@ public class UniversityProjectApplicationTests {
 			}
 
 			@Override
+			public User findOne(Long id) {
+				return null;
+			}
+
+			@Override
 			public void saveUser(User user) {
 
 			}

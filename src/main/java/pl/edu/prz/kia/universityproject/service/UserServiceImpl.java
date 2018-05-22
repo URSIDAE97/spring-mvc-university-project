@@ -18,31 +18,38 @@ public class UserServiceImpl implements UserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     private QuestionService questionService;
     private UserAnswerService userAnswerService;
+    private EmailService emailService;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder, QuestionService questionService, UserAnswerService userAnswerService) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder, QuestionService questionService,
+                           UserAnswerService userAnswerService, EmailService emailService) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.questionService = questionService;
         this.userAnswerService = userAnswerService;
+        this.emailService = emailService;
     }
 
     @Override
-    public User findUserByEmail(String email) {
-        return userRepository.findByEmail(email);
+    public User findUserByEmail(String email) { return userRepository.findByEmail(email);
+    }
+
+    @Override
+    public User findOne(Long id) { return userRepository.findOne(id);
     }
 
     @Override
     public void saveUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setActive(1);
+       // user.setActive(1);
         user.setSurvey(false);
         Role userRole = roleRepository.findByRole("USER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 
-        //Dodanie uzytkownikowi domyslnych wartosci dla kazdego pytania
+        emailService.SendActivationEmail(user);
 
+        //Dodanie uzytkownikowi domyslnych wartosci dla kazdego pytania
         List<Question> questions = questionService.findAll();
         questions.forEach(question -> userAnswerService.addAnswer(0, question, user));
 

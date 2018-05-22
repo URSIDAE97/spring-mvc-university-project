@@ -7,9 +7,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.edu.prz.kia.universityproject.model.Question;
 import pl.edu.prz.kia.universityproject.model.User;
@@ -88,4 +86,15 @@ public class UserController {
         return modelAndView;
     }
 
+
+   @RequestMapping(value = "/activation/{user_id}", method = RequestMethod.GET)
+
+    public String handleUserActivation(@PathVariable String user_id) {
+        System.out.println(user_id);
+        long id = Long.parseLong(user_id);
+        User user = userService.findOne(id);
+        user.setActive(1);
+
+        return "redirect:/external";
+    }
 }
