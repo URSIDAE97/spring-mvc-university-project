@@ -44,23 +44,14 @@
         </div>
     </div>
 </nav>
-<!--<div class="container">-->
 
-    <!--<div class="panel-group" style="margin-top:40px">-->
-        <!--<div class="panel panel-primary">-->
-            <!--<div class="panel-heading">-->
-                <!--<h3 th:utext="${userName}"></h3>-->
-            <!--</div>-->
-            <!--<p class="admin-message-text text-center" th:utext="${userMessage}"></p>-->
-        <!--</div>-->
-    <!--</div>-->
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-8">
 
 
 
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <div class="alert alert-success alert-dismissible fade show" role="alert" th:if="${not user.didSurvey()}">
                 <p>
                     <strong>Nie uzupełniłeś jeszcze ankiety! </strong> Po uzupełnieniu ankiety wyświetlimy Ci listę kierunków na które się nadajesz!
                 </p>
@@ -80,6 +71,12 @@
             </ul>
         </div>
         <div class="col-md-4">
+            <div class="alert alert-info" role="alert" th:if="${user.didSurvey()}">
+                <p>
+                    <strong>Pamiętaj!</strong> Zawsze możesz edytować swoje odpowiedzi.
+                </p>
+                <a class="btn btn-outline-primary" th:href="@{/user/survey}" role="button">Edytuj</a>
+            </div>
             <h4>Twoje dane</h4>
             <table class="table table-sm">
                 <tbody>
