@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 import pl.edu.prz.kia.universityproject.model.User;
 import pl.edu.prz.kia.universityproject.service.UserService;
+import pl.edu.prz.kia.universityproject.service.UserServiceImpl;
+
+import java.util.List;
+
 
 @Controller
 public class AdminController {
@@ -27,6 +31,17 @@ public class AdminController {
         modelAndView.addObject("userName", "Witaj " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
         modelAndView.addObject("adminMessage","To jest widoczne tylko dla admina");
         modelAndView.setViewName("admin/home");
+        return modelAndView;
+    }
+
+    @GetMapping(value="/admin/userList")
+    public ModelAndView adminUserList(){
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        List <User> users = userService.findAll();
+        modelAndView.addObject("users", users);
+        modelAndView.setViewName("admin/userList");
         return modelAndView;
     }
 }

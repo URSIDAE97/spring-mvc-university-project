@@ -9,4 +9,5 @@ public interface UserService {
 	User findUserByEmail(String email);
 	void saveUser(User user);
 	void calculateSurveyResults(List<Specialization> specializations, User user);
+	List<User> findAll();
 }

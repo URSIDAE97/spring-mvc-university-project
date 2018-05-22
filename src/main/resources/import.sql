@@ -2,9 +2,9 @@ INSERT INTO rola (id_roli, rola) VALUES (1, 'ADMIN');
 INSERT INTO rola (id_roli, rola) VALUES (2, 'USER');
 
 
-INSERT INTO uzytkownik (id_uzytkownika, email, haslo, imie, nazwisko, active) VALUES (1, 'user@user', '$2a$10$Anb7jpgtB7VNkiHyV0kvWuYgHsHwKRQMPzQ.EOZLGXgnj/8bSzfha', 'user', 'user', 1);
-INSERT INTO uzytkownik (id_uzytkownika, email, haslo, imie, nazwisko, active) VALUES (2, 'usedr@usder', '$2a$10$Anb7jpgtB7VNkiHyV0kvWuYgHsHwKRQMPzQ.EOZLGXgnj/8bSzfha', 'user', 'user', 1);
-INSERT INTO uzytkownik (id_uzytkownika, email, haslo, imie, nazwisko, active) VALUES (3, 'admin@admin', '$2a$10$Anb7jpgtB7VNkiHyV0kvWuYgHsHwKRQMPzQ.EOZLGXgnj/8bSzfha', 'admin', 'admin', 1);
+INSERT INTO uzytkownik (id_uzytkownika, email, haslo, imie, nazwisko, active, ankieta) VALUES (1, 'user@user', '$2a$10$Anb7jpgtB7VNkiHyV0kvWuYgHsHwKRQMPzQ.EOZLGXgnj/8bSzfha', 'user', 'user', 1, false);
+INSERT INTO uzytkownik (id_uzytkownika, email, haslo, imie, nazwisko, active, ankieta) VALUES (2, 'usedr@usder', '$2a$10$Anb7jpgtB7VNkiHyV0kvWuYgHsHwKRQMPzQ.EOZLGXgnj/8bSzfha', 'user', 'user', 1, false);
+INSERT INTO uzytkownik (id_uzytkownika, email, haslo, imie, nazwisko, active, ankieta) VALUES (3, 'admin@admin', '$2a$10$Anb7jpgtB7VNkiHyV0kvWuYgHsHwKRQMPzQ.EOZLGXgnj/8bSzfha', 'admin', 'admin', 1, false);
 
 INSERT INTO uzytkownik_rola (id_uzytkownika, id_roli) VALUES (1, 2);
 INSERT INTO uzytkownik_rola (id_uzytkownika, id_roli) VALUES (2, 2);
@@ -34,7 +34,7 @@ INSERT INTO kierunek (id_kierunku, id_wydzialu, nazwa, opis) VALUES (11, 3, 'Zar
 INSERT INTO kierunek (id_kierunku, id_wydzialu, nazwa, opis) VALUES (12, 3, 'Lotnictwo i kosmonautyka', 'brak opisu');
 INSERT INTO kierunek (id_kierunku, id_wydzialu, nazwa, opis) VALUES (13, 3, 'Transport', 'brak opisu');
 INSERT INTO kierunek (id_kierunku, id_wydzialu, nazwa, opis) VALUES (14, 3, 'Mechatronika', 'brak opisu');
-INSERT INTO kierunek (id_kierunku, id_wydzialu, nazwa, opis) VALUES (15, 3, 'Inżznieria materialowa', 'brak opisu');
+INSERT INTO kierunek (id_kierunku, id_wydzialu, nazwa, opis) VALUES (15, 3, 'Inżynieria materiałowa', 'brak opisu');
 INSERT INTO kierunek (id_kierunku, id_wydzialu, nazwa, opis) VALUES (16, 4, 'Architektura', 'brak opisu');
 INSERT INTO kierunek (id_kierunku, id_wydzialu, nazwa, opis) VALUES (17, 4, 'Budownictwo', 'brak opisu');
 INSERT INTO kierunek (id_kierunku, id_wydzialu, nazwa, opis) VALUES (18, 4, 'Ochrona srodowiska', 'brak opisu');
@@ -93,14 +93,47 @@ INSERT INTO pytanie (id_pytania , tresc) VALUES (39, 'Dzialasz szybko i sprawnie
 INSERT INTO pytanie (id_pytania , tresc) VALUES (40, 'Czy uwazasz ze odnawianie starych samochodow to dobre hobby?');
 INSERT INTO pytanie (id_pytania , tresc) VALUES (41, 'Twoim zdaniem posiadasz dobrze rozwiniete zdolnosci manualne?');
 
-
-INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (1, 9, 1, 1);
-INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (2, 10, 2, 1);
-INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (3, 5, 3, 1);
-INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (4, 3, 1, 2);
-INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (5, 7, 2, 2);
-INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (6, 8, 3, 2);
-
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (1, 0, 1, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (2, 0, 2, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (3, 0, 3, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (4, 0, 4, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (5, 0, 5, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (6, 0, 6, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (7, 0, 7, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (8, 0, 8, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (9, 0, 9, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (10, 0, 10, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (11, 0, 11, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (12, 0, 12, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (13, 0, 13, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (14, 0, 14, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (15, 0, 15, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (16, 0, 16, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (17, 0, 17, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (18, 0, 18, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (19, 0, 19, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (20, 0, 20, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (21, 0, 21, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (22, 0, 22, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (23, 0, 23, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (24, 0, 24, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (25, 0, 25, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (26, 0, 26, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (27, 0, 27, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (28, 0, 28, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (29, 0, 29, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (30, 0, 30, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (31, 0, 31, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (32, 0, 32, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (33, 0, 33, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (34, 0, 34, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (35, 0, 35, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (36, 0, 36, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (37, 0, 37, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (38, 0, 38, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (39, 0, 39, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (40, 0, 40, 3);
+INSERT INTO odpowiedz_uzytkownika (id_odpowiedzi_uzytkownika, wartosc, id_pytania, id_uzytkownika) VALUES (41, 0, 41, 3);
 
 INSERT INTO wartosc_oczekiwana (id_wartosci_oczekiwanej, wartosc, id_pytania, id_kierunku) VALUES (1,1,1,1);
 INSERT INTO wartosc_oczekiwana (id_wartosci_oczekiwanej, wartosc, id_pytania, id_kierunku) VALUES (2,7,2,1);

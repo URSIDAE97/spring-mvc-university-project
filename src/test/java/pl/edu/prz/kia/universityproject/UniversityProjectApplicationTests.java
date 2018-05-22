@@ -5,6 +5,7 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,6 +21,7 @@ public class UniversityProjectApplicationTests {
 
 	@Test
 	public void contextLoads() throws Exception {
+
 		UserService mockUserService = new UserService() {
 			@Override
 			public User findUserByEmail(String email) {
@@ -30,10 +32,15 @@ public class UniversityProjectApplicationTests {
 			public void saveUser(User user) {
 
 			}
-			
+
 			@Override
 			public void calculateSurveyResults(List<Specialization> specializations, User user) {
-			
+
+			}
+
+			@Override
+			public List<User> findAll() {
+				return null;
 			}
 		};
 		//HomeController homeController = new HomeController();
