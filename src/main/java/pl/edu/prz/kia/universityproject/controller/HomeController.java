@@ -30,4 +30,12 @@ public class HomeController {
 
         return modelAndView;
     }
+
+    @GetMapping(value = "activation")
+    public ModelAndView activation() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("activation");
+
+        return modelAndView;
+    }
 }

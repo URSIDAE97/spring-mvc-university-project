@@ -62,11 +62,11 @@ public class EmailService
             String ajdi = Objects.toString(temp);
 
             // Set Subject: header field
-            message.setSubject("Aktywacja Twojego konta, " + user.getName()+" "+ajdi);
+            message.setSubject("Aktywacja Twojego konta, " + user.getName());
 
             // Now set the actual message
             message.setText("Aby aktywować konto kliknij w poniższy link \n" +
-                    "http://localhost:8080/user/activation/"+ajdi);
+                    "http://localhost:8080/activation/"+ajdi);
 
             // Send message
             Transport.send(message);

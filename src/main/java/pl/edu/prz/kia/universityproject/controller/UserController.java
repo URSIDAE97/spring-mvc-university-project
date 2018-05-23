@@ -90,11 +90,12 @@ public class UserController {
     @RequestMapping(value = "/activation/{user_id}", method = RequestMethod.GET)
 
     public String handleUserActivation(@PathVariable String user_id) {
-        System.out.println(user_id);
+        //System.out.println(user_id);
+        System.out.println("test");
         long idd = Long.parseLong(user_id);
         User user = userService.getOne(idd);
         userService.saveUserActivation(user);
 
-        return "redirect:/external";
+        return "redirect:/activation";
     }
 }
