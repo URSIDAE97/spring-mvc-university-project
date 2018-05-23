@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
     public User findUserByEmail(String email) { return userRepository.findByEmail(email);
     }
     @Override
-    public User findOne(Long id) { return userRepository.findOne(id);
+    public User getOne(Long id) { return userRepository.getOne(id);
      }
 
     @Override
@@ -45,14 +45,13 @@ public class UserServiceImpl implements UserService {
         Role userRole = roleRepository.findByRole("USER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 
-        emailService.SendActivationEmail(user);
-
         List<Question> questions = questionService.findAll();
         questions.forEach(question -> userAnswerService.addAnswer(0, question, user));
 
         // ------
 
         userRepository.save(user);
+        emailService.SendActivationEmail(user);
     }
   
     @Override
