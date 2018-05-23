@@ -93,7 +93,7 @@ public class UserController {
         //System.out.println(user_id);
         System.out.println("test");
         long idd = Long.parseLong(user_id);
-        User user = userService.getOne(idd);
+        User user = userService.findOne(idd);
         userService.saveUserActivation(user);
 
         return "redirect:/activation";
