@@ -59,4 +59,14 @@ public class AdminController {
         userService.deleteUser(userId);
         return "redirect:userList";
     }
+    @GetMapping(value="/admin/adminList")
+    public ModelAndView adminadminList(){
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        List <User> users = userService.findAll();
+        modelAndView.addObject("users", users);
+        modelAndView.setViewName("admin/adminList");
+        return modelAndView;
+    }
 }
