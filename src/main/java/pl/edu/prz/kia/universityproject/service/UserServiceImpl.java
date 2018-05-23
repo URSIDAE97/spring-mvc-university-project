@@ -18,36 +18,45 @@ public class UserServiceImpl implements UserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     private QuestionService questionService;
     private UserAnswerService userAnswerService;
+    private EmailService emailService;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder, QuestionService questionService, UserAnswerService userAnswerService) {
-        this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-        this.questionService = questionService;
-        this.userAnswerService = userAnswerService;
-    }
-
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder, QuestionService questionService,
+                           UserAnswerService userAnswerService, EmailService emailService) {
+         this.userRepository = userRepository;
+         this.roleRepository = roleRepository;
+         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+         this.questionService = questionService;
+         this.userAnswerService = userAnswerService;
+         this.emailService = emailService;
+     }
+    
     @Override
-    public User findUserByEmail(String email) {
-        return userRepository.findByEmail(email);
+    public User findUserByEmail(String email) { return userRepository.findByEmail(email);
     }
+    @Override
+    public User getOne(Long id) { return userRepository.getOne(id);
+     }
 
     @Override
     public void saveUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setActive(1);
         user.setSurvey(false);
         Role userRole = roleRepository.findByRole("USER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
-
-        //Dodanie uzytkownikowi domyslnych wartosci dla kazdego pytania
 
         List<Question> questions = questionService.findAll();
         questions.forEach(question -> userAnswerService.addAnswer(0, question, user));
 
         // ------
 
+        userRepository.save(user);
+        emailService.SendActivationEmail(user);
+    }
+  
+    @Override
+    public void saveUserActivation(User user) {
+        user.setActive(1);
         userRepository.save(user);
     }
 

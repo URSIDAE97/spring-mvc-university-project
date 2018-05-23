@@ -27,11 +27,21 @@ public class UniversityProjectApplicationTests {
 			public User findUserByEmail(String email) {
 				return null;
 			}
+			
+			@Override
+			public User getOne(Long id) {
+				return null;
+			}
 
 			@Override
 			public void saveUser(User user) {
 
 			}
+      
+      			@Override
+      			public void saveUserActivation(User user) {
+
+      			}
 
 			@Override
 			public void calculateSurveyResults(List<Specialization> specializations, User user) {
