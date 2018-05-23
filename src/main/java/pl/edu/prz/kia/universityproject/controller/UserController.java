@@ -1,10 +1,12 @@
 package pl.edu.prz.kia.universityproject.controller;
 
-
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.bind.BindResult;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.edu.prz.kia.universityproject.model.Question;
@@ -85,5 +87,15 @@ public class UserController {
     }
 
 
+    @RequestMapping(value = "/activation/{user_id}", method = RequestMethod.GET)
 
+    public String handleUserActivation(@PathVariable String user_id) {
+        //System.out.println(user_id);
+        System.out.println("test");
+        long idd = Long.parseLong(user_id);
+        User user = userService.getOne(idd);
+        userService.saveUserActivation(user);
+
+        return "redirect:/activation";
+    }
 }
