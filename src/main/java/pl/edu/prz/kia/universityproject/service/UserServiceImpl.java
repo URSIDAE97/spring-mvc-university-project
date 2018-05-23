@@ -27,21 +27,22 @@ public class UserServiceImpl implements UserService {
         this.questionService = questionService;
         this.userAnswerService = userAnswerService;
     }
-
+    
     @Override
-    public User findUserByEmail(String email) {
-        return userRepository.findByEmail(email);
+    public User findUserByEmail(String email) { return userRepository.findByEmail(email);
     }
+    @Override
+    public User findOne(Long id) { return userRepository.findOne(id);
+     }
 
     @Override
     public void saveUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setActive(1);
         user.setSurvey(false);
         Role userRole = roleRepository.findByRole("USER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 
-        //Dodanie uzytkownikowi domyslnych wartosci dla kazdego pytania
+        emailService.SendActivationEmail(user);
 
         List<Question> questions = questionService.findAll();
         questions.forEach(question -> userAnswerService.addAnswer(0, question, user));
