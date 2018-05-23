@@ -18,15 +18,18 @@ public class UserServiceImpl implements UserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     private QuestionService questionService;
     private UserAnswerService userAnswerService;
+    private EmailService emailService;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder, QuestionService questionService, UserAnswerService userAnswerService) {
-        this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-        this.questionService = questionService;
-        this.userAnswerService = userAnswerService;
-    }
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder, QuestionService questionService,
+                           UserAnswerService userAnswerService, EmailService emailService) {
+         this.userRepository = userRepository;
+         this.roleRepository = roleRepository;
+         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+         this.questionService = questionService;
+         this.userAnswerService = userAnswerService;
+         this.emailService = emailService;
+     }
     
     @Override
     public User findUserByEmail(String email) { return userRepository.findByEmail(email);
