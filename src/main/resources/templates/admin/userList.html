@@ -63,8 +63,22 @@
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-12">
-            <h2>Zarządzaj użytkownikami</h2>
-
+            <div class="col-md-8">
+                <h2>Zarządzaj użytkownikami</h2>
+            </div>
+            <div class="container">
+                <div class="row mb-4">
+                    <div class="col-sm" sec:authorize="hasAuthority('ADMIN')">
+                        <a th:href="@{/admin/userList}" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Użytkownicy</a>
+                    </div>
+                    <div class="col-sm" sec:authorize="hasAuthority('ADMIN')">
+                        <a th:href="@{/admin/adminList}" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Administratorzy</a>
+                    </div>
+                    <div class="col-sm" sec:authorize="hasAuthority('ADMIN')">
+                        <a th:href="@{/admin/facultiesList}" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Wydziały i kierunki</a>
+                    </div>
+                </div>
+            </div>
             <table class="table table-sm">
                 <thead>
                 <tr>
