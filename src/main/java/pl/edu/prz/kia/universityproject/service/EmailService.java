@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import pl.edu.prz.kia.universityproject.model.User;
 
+import java.util.Objects;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -57,9 +58,15 @@ public class EmailService
             // Set Subject: header field
             message.setSubject("Aktywacja Twojego konta, " + user.getName());
 
+            Long temp = user.getId();
+            String ajdi = Objects.toString(temp);
+
+            // Set Subject: header field
+            message.setSubject("Aktywacja Twojego konta, " + user.getName()+" "+ajdi);
+
             // Now set the actual message
             message.setText("Aby aktywować konto kliknij w poniższy link \n" +
-                    "http://localhost:8080/user/activation/"+user.getId());
+                    "http://localhost:8080/user/activation/"+ajdi);
 
             // Send message
             Transport.send(message);

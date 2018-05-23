@@ -29,7 +29,7 @@ public class UniversityProjectApplicationTests {
 			}
 
 			@Override
-			public User findOne(Long id) {
+			public User getOne(Long id) {
 				return null;
 			}
 
@@ -37,6 +37,11 @@ public class UniversityProjectApplicationTests {
 			public void saveUser(User user) {
 
 			}
+
+            @Override
+            public void saveUserActivation(User user) {
+
+            }
 
 			@Override
 			public void calculateSurveyResults(List<Specialization> specializations, User user) {

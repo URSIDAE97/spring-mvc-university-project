@@ -31,6 +31,7 @@
                     <a class="nav-link" href="#">blabla</a>
                 </li>
             </ul>
+
             <div sec:authorize="isAnonymous()">
                 <a th:href="@{/login}" class="btn btn-outline-success" role="button" aria-pressed="true">Logowanie</a>
                 <a th:href="@{/registration}" class="ml-1 btn btn-outline-info" role="button" aria-pressed="true">Rejestracja</a>

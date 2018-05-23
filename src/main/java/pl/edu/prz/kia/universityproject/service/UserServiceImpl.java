@@ -36,18 +36,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findOne(Long id) { return userRepository.findOne(id);
+    public User getOne(Long id) { return userRepository.getOne(id);
     }
 
     @Override
     public void saveUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-       // user.setActive(1);
         user.setSurvey(false);
         Role userRole = roleRepository.findByRole("USER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
-
-        emailService.SendActivationEmail(user);
 
         //Dodanie uzytkownikowi domyslnych wartosci dla kazdego pytania
         List<Question> questions = questionService.findAll();
@@ -55,6 +52,13 @@ public class UserServiceImpl implements UserService {
 
         // ------
 
+        userRepository.save(user);
+
+        emailService.SendActivationEmail(user);
+    }
+    @Override
+    public void saveUserActivation(User user) {
+        user.setActive(1);
         userRepository.save(user);
     }
 
