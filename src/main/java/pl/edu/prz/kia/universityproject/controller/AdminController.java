@@ -69,7 +69,7 @@ public class AdminController {
         User user = userService.findUserByEmail(auth.getName());
         List <User> users = userService.findAll();
         List <Role> roles= roleService.findAll();
-        modelAndView.addObject("users", roles);
+        modelAndView.addObject("roles", roles);
         modelAndView.addObject("users", users);
         modelAndView.addObject("user", user);
         modelAndView.setViewName("admin/adminList");
