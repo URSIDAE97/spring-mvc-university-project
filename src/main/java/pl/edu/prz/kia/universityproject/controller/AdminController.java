@@ -1,6 +1,7 @@
 package pl.edu.prz.kia.universityproject.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import pl.edu.prz.kia.universityproject.model.Role;
 import pl.edu.prz.kia.universityproject.model.User;
 import pl.edu.prz.kia.universityproject.service.RoleService;
 import pl.edu.prz.kia.universityproject.service.UserAnswerService;
@@ -58,5 +60,19 @@ public class AdminController {
         System.out.println(userId);
         userService.deleteUser(userId);
         return "redirect:userList";
+    }
+
+    @GetMapping(value="/admin/adminList")
+    public ModelAndView adminList(){
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        List <User> users = userService.findAll();
+        List <Role> roles= roleService.findAll();
+        modelAndView.addObject("roles", roles);
+        modelAndView.addObject("users", users);
+        modelAndView.addObject("user", user);
+        modelAndView.setViewName("admin/adminList");
+        return modelAndView;
     }
 }
