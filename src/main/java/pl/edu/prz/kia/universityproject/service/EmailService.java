@@ -54,10 +54,7 @@ public class EmailService
             // Set To: header field of the header.
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(to));
-
-            // Set Subject: header field
-            message.setSubject("Aktywacja Twojego konta, " + user.getName());
-
+            
             Long temp = user.getId();
             String ajdi = Objects.toString(temp);
 
@@ -66,12 +63,10 @@ public class EmailService
 
             // Now set the actual message
             message.setText("Aby aktywować konto kliknij w poniższy link \n" +
-                    "http://localhost:8080/activation/"+ajdi);
+                    "https://spring-mvc-university-project.herokuapp.com/activation/"+ajdi);
 
             // Send message
             Transport.send(message);
-
-            // System.out.println("Sent message successfully....");
 
         } catch (MessagingException e) {
             throw new RuntimeException(e);
