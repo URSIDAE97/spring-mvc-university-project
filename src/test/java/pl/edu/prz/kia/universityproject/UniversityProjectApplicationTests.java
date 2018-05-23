@@ -27,6 +27,11 @@ public class UniversityProjectApplicationTests {
 			public User findUserByEmail(String email) {
 				return null;
 			}
+			
+			@Override
+			public User findOne(Long id) {
+				return null;
+			}
 
 			@Override
 			public void saveUser(User user) {
