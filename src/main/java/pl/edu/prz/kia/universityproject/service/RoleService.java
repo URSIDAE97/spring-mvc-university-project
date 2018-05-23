@@ -13,5 +13,6 @@ public class RoleService {
     public RoleService(RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
     }
-
+    public List<Role> findAll() { return roleRepository.findAll();
+                                }
 }
