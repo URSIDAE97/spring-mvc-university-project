@@ -7,8 +7,9 @@ import java.util.List;
 
 public interface UserService {
 	User findUserByEmail(String email);
+	User findOne(Long id);
 	void saveUser(User user);
-  void saveUserActivation(User user);
+  	void saveUserActivation(User user);
 	void calculateSurveyResults(List<Specialization> specializations, User user);
 	List<User> findAll();
 	void deleteUser(Long userId);
