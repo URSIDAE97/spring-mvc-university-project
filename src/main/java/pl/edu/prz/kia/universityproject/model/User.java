@@ -8,6 +8,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
 import java.util.Set;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "uzytkownik")
@@ -44,16 +46,17 @@ public class User {
 	@Column(name = "ankieta")
 	private boolean survey;
 
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "uzytkownik_rola", joinColumns = @JoinColumn(name = "id_uzytkownika"), inverseJoinColumns = @JoinColumn(name = "id_roli"))
 	private Set<Role> roles;
 
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "uzytkownik_kierunek", joinColumns = @JoinColumn(name = "id_uzytkownika"), inverseJoinColumns = @JoinColumn(name = "id_kierunku"))
 	private Set<Specialization> specializations;
 
 
 	@OneToMany(mappedBy = "user")
+        @OnDelete(action = OnDeleteAction.CASCADE)
 	private List<UserAnswer> UserAnswers;
 
 

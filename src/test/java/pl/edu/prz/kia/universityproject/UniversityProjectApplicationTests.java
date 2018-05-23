@@ -29,19 +29,14 @@ public class UniversityProjectApplicationTests {
 			}
 
 			@Override
-			public User getOne(Long id) {
-				return null;
-			}
-
-			@Override
 			public void saveUser(User user) {
 
 			}
+      
+      @Override
+      public void saveUserActivation(User user) {
 
-            @Override
-            public void saveUserActivation(User user) {
-
-            }
+      }
 
 			@Override
 			public void calculateSurveyResults(List<Specialization> specializations, User user) {
@@ -51,6 +46,10 @@ public class UniversityProjectApplicationTests {
 			@Override
 			public List<User> findAll() {
 				return null;
+			}
+
+			@Override
+			public void deleteUser(Long userId) {
 			}
 		};
 		//HomeController homeController = new HomeController();
