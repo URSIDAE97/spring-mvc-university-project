@@ -17,7 +17,13 @@ public class Faculty {
     @Column(name="nazwa")
     private String name;
 
+    @NotNull
+    @Column(name="logo")
     private String logo;
+
+    @NotNull
+    @Column(name="strona")
+    private String website;
 
     @NotNull
     @Column(name="adres")
@@ -65,5 +71,10 @@ public class Faculty {
     public void setSpecializations(List<Specialization> specializations) {
         this.specializations = specializations;
     }
+
+    public String getWebsite() { return website; }
+
+    public void setWebsite(String website) { this.website = website; }
+
 
 }
