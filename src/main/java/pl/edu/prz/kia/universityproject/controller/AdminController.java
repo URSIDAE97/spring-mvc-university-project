@@ -53,6 +53,18 @@ public class AdminController {
         return modelAndView;
     }
 
+    @GetMapping(value="/admin/adminList")
+    public ModelAndView adminList(){
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        List <User> users = userService.findAll();
+        modelAndView.addObject("users", users);
+        modelAndView.addObject("user", user);
+        modelAndView.setViewName("admin/adminList");
+        return modelAndView;
+    }
+
     @GetMapping(value="/admin/delete")
     public String adminUserDelete(@RequestParam(name="userId")Long userId) {
         System.out.println(userId);
