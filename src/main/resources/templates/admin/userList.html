@@ -95,7 +95,7 @@
                     <td th:text="${currentUser.lastName}"></td>
                     <td th:text="${currentUser.email}"></td>
                     <td th:text="${currentUser.didSurvey()}"></td>
-                    <td><button type="button" class="btn btn-warning">Edytuj</button></td>
+                    <td><a th:href="@{/admin/edit/{id}(id = ${currentUser.id})}" button type="button" class="btn btn-warning">Edytuj</button></td>
                     <td>
                         <button type="button" class="btn btn-danger" data-toggle="modal" th:attr="data-target='#exampleModal' + ${currentUser.id}" th:unless="${currentUser.id}==${user.id}">Usuń</button>                        
                         <div class="modal fade" th:attr="id = 'exampleModal' + ${currentUser.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -14,6 +14,9 @@ import pl.edu.prz.kia.universityproject.service.RoleService;
 import pl.edu.prz.kia.universityproject.service.UserAnswerService;
 import pl.edu.prz.kia.universityproject.service.UserService;
 import pl.edu.prz.kia.universityproject.service.UserServiceImpl;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -29,7 +32,24 @@ public class AdminController {
     public AdminController(UserService userService) {
         this.userService = userService;
     }
-
+ 
+	 @GetMapping(value="/admin/edit/{userId}")
+    public ModelAndView adminUserEdit(@PathVariable Long userId) {
+        ModelAndView modelAndView = new ModelAndView();
+        User user = userService.getOne(userId);
+        modelAndView.addObject("user", user);
+        modelAndView.setViewName("admin/edit");
+        return modelAndView;
+    }
+   
+    @PostMapping(value = "/admin/edit/{userId}")
+    public String createNewUser(@PathVariable Long userId, @ModelAttribute("updateUser") User updateUser) {
+        ModelAndView modelAndView = new ModelAndView();
+        userService.updateUser(updateUser);
+        modelAndView.addObject("successMessage", "Dane uzytkownika zostaly zaktualizowane.");
+        return "redirect:/admin/userList";
+    }
+	
     @GetMapping(value="/admin/home")
     public ModelAndView adminHome(){
         ModelAndView modelAndView = new ModelAndView();
