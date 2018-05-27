@@ -33,4 +33,6 @@ public class SpecializationService {
                     specializationRepository.save(specialization1);
 
     }
+    public Specialization findSpecializationById(Long id){return specializationRepository.getOne(id);}
+
 }

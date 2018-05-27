@@ -130,7 +130,9 @@
                         th:object="${specialization}" method="post" autocomplete="off">
                     <fieldset>
                         <div>
-                            <input type="text" th:field="*{id}"  placeholder="id" class="form-control" />
+                            <label	th:if="${#fields.hasErrors('id')}" th:errors="*{id}"
+                                      class="validation-message"></label>
+                            <input type="text" th:field="*{id}"  placeholder="id_kierunku" class="form-control" />
                         </div>
 
                         <div>
@@ -140,13 +142,15 @@
                             <input type="text" th:field="*{description}" placeholder="opis" class="form-control" />
                         </div>
                         <div>
-                            <input type="text" th:field="*{faculty}" placeholder="id_wydział" class="form-control" />
+                            <input type="text" th:field="*{faculty.id}" placeholder="id_wydział" class="form-control" />
+                            <label	th:if="${#fields.hasErrors('faculty')}" th:errors="*{faculty}"
+                                      class="validation-message"></label>
                         </div>
                         <div>
                             <button type="submit" class="btn btn-lg btn-success btn-block">Zapisz</button>
                         </div>
+                        <!--<span th:utext="${successMessage}"></span>-->
 
-                        <span th:utext="${successMessage}"></span>
                     </fieldset>
                   </form>
                 </tbody>
@@ -157,10 +161,3 @@
 </div>
 </body>
 </html>
-<!--<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>-->
-
-
-<!--<form action="#" th:action="@{/admin/facultiesSpecializationsList}"-->
-<!--th:object="${currentSpecialization}" method="post">-->
-<!--</form>-->
-

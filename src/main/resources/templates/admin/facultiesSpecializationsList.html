@@ -113,7 +113,7 @@
 
             <!--SPECIALIZATIONS-->
             <table class="table table-sm">
-                <thead>
+                <tbody>
                 <tr>
                     <th scope="col">ID kierunku</th>
                     <th scope="col">Nazwa</th>
@@ -122,29 +122,22 @@
                     <th scope="col"></th>
                     <th scope="col"></th>
                 </tr>
-                </thead>
+
                 <tr th:each="currentSpecialization : ${specializations}">
                     <th scope="row" th:text="${currentSpecialization.id}"></th>
                     <td th:text="${currentSpecialization.name}"></td>
                     <td th:text="${currentSpecialization.description}"></td>
                     <td th:text="${currentSpecialization.faculty.id}"></td>
                     <td>
-                        <a th:href="@{/admin/facultiesSpecializationsEdit}" class="btn btn-danger"
-                           role="button" aria-pressed="true">Edytuj</a>
-
-
                     </td>
                 </tr>
+                    <a th:href="@{/admin/facultiesSpecializationsEdit}" class="btn btn-lg btn-danger btn-block"
+                   role="button" aria-pressed="true">Edytuj</a>
+
+                </tbody>
             </table>
         </div>
         </div>
 </div>
 </body>
 </html>
-        <!--<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>-->
-
-
-        <!--<form action="#" th:action="@{/admin/facultiesSpecializationsList}"-->
-              <!--th:object="${currentSpecialization}" method="post">-->
-        <!--</form>-->
-

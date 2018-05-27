@@ -109,21 +109,27 @@ public class AdminController {
     }
 
     @PostMapping(value="/admin/facultiesSpecializationsEdit")
-    public String specializationUpdate(@Valid Specialization specialization) {
+    public ModelAndView specializationUpdate(@Valid Specialization specialization, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
-        specializationService.updateSpecialization(specialization);
-        List<Faculty> faculties = facultyService.findAll();
         List <Specialization> specializations = specializationService.findAll();
-        modelAndView.addObject("successMessage", "zapisano");
-        modelAndView.addObject("specialization", specialization);
-        modelAndView.addObject("faculties", faculties);
-//        modelAndView.addObject("specializations", specializations);
-        modelAndView.setViewName("admin/facultiesSpecializationsList");
-        return "redirect:/admin/facultiesSpecializationsList";
+        List<Faculty> faculties = facultyService.findAll();
+        if(specialization.getId() > specializations.size()){
+            bindingResult.rejectValue("id", "error.id","Nie ma specjalizacji o takim ID!");
+        }
+        else if(specialization.getFaculty().getId() > faculties.size()){
+            bindingResult.rejectValue("faculty", "error.faculty.id","Nie ma wydziału o takim ID!");
+        }
+
+System.out.println(specialization.getFaculty().getId());
+        System.out.println(faculties.size());
+        if (bindingResult.hasErrors()){
+            modelAndView.setViewName("/admin/facultiesSpecializationsEdit");
+        }        else        {
+            specializationService.updateSpecialization(specialization);
+            modelAndView.addObject("specialization", specialization);
+            modelAndView.addObject("faculties", faculties);
+            modelAndView.setViewName("redirect:facultiesSpecializationsList");
+        }
+        return modelAndView;
     }
-//    @PostMapping(value="/admin/facultiesSpecializationsEdit")
-//    public String specializationUpdate(@ModelAttribute("wrapper") Specialization spec) {
-//        spec.getId(specializationService.updateSpecialization());
-//        return "redirect:/admin/facultiesSpecializationsEdit";
-//   }
 }
