@@ -56,6 +56,11 @@ public class UniversityProjectApplicationTests {
 			@Override
 			public void deleteUser(Long userId) {
 			}
+			
+			@Override
+			public void updateUser(User user) {
+				
+			}
 		};
 		//HomeController homeController = new HomeController();
 		LoginController loginController = new LoginController(mockUserService);
