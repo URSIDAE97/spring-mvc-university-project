@@ -22,4 +22,15 @@ public class SpecializationService {
     public List<Specialization> findAll() {
         return specializationRepository.findAll();
     }
+
+
+    public void updateSpecialization(Specialization specialization){
+            Specialization specialization1 = specializationRepository.getOne(specialization.getId());
+            specialization1.setId(specialization.getId());
+            specialization1.setName(specialization.getName());
+            specialization1.setFaculty(specialization.getFaculty());
+            specialization1.setDescription(specialization.getDescription());
+                    specializationRepository.save(specialization1);
+
+    }
 }

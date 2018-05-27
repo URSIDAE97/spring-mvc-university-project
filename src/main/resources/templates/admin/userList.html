@@ -18,8 +18,8 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
     <script type="text/javascript">
-    function sliderChange(value, id) {
-            document.getElementById('slider'+id).innerHTML = value;
+        function sliderChange(value, id) {
+            document.getElementById('slider' + id).innerHTML = value;
         }
     </script>
 </head>
@@ -66,13 +66,16 @@
             <div class="container">
                 <div class="row mb-4">
                     <div class="col-sm" sec:authorize="hasAuthority('ADMIN')">
-                        <a th:href="@{/admin/userList}" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Użytkownicy</a>
+                        <a th:href="@{/admin/userList}" class="btn btn-primary btn-lg btn-block" role="button"
+                           aria-pressed="true">Użytkownicy</a>
                     </div>
                     <div class="col-sm" sec:authorize="hasAuthority('ADMIN')">
-                        <a th:href="@{/admin/adminList}" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Administratorzy</a>
+                        <a th:href="@{/admin/adminList}" class="btn btn-primary btn-lg btn-block" role="button"
+                           aria-pressed="true">Administratorzy</a>
                     </div>
                     <div class="col-sm" sec:authorize="hasAuthority('ADMIN')">
-                        <a th:href="@{/admin/facultiesList}" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Wydziały i kierunki</a>
+                        <a th:href="@{/admin/facultiesSpecializationsList}" class="btn btn-primary btn-lg btn-block" role="button"
+                           aria-pressed="true">Wydziały i kierunki</a>
                     </div>
                 </div>
             </div>
@@ -95,10 +98,16 @@
                     <td th:text="${currentUser.lastName}"></td>
                     <td th:text="${currentUser.email}"></td>
                     <td th:text="${currentUser.didSurvey()}"></td>
-                    <td><button type="button" class="btn btn-warning">Edytuj</button></td>
                     <td>
-                        <button type="button" class="btn btn-danger" data-toggle="modal" th:attr="data-target='#exampleModal' + ${currentUser.id}" th:unless="${currentUser.id}==${user.id}">Usuń</button>                        
-                        <div class="modal fade" th:attr="id = 'exampleModal' + ${currentUser.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <button type="button" class="btn btn-warning">Edytuj</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger" data-toggle="modal"
+                                th:attr="data-target='#exampleModal' + ${currentUser.id}"
+                                th:unless="${currentUser.id}==${user.id}">Usuń
+                        </button>
+                        <div class="modal fade" th:attr="id = 'exampleModal' + ${currentUser.id}" tabindex="-1"
+                             role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -111,12 +120,14 @@
                                         Czy na pewno chcesz usunąć wybranego użytkownika?
                                     </div>
                                     <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Nie</button>
-                                            <a th:href="@{/admin/delete(userId=${currentUser.id})}" class="btn btn-danger">Tak</a>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Nie
+                                        </button>
+                                        <a th:href="@{/admin/delete(userId=${currentUser.id})}" class="btn btn-danger">Tak</a>
                                     </div>
                                 </div>
                             </div>
-                        </div></td>
+                        </div>
+                    </td>
                 </tr>
                 </tbody>
             </table>

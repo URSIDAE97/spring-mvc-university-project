@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -19,7 +19,7 @@
             crossorigin="anonymous"></script>
     <script type="text/javascript">
         function sliderChange(value, id) {
-            document.getElementById('slider'+id).innerHTML = value;
+            document.getElementById('slider' + id).innerHTML = value;
         }
     </script>
 </head>
@@ -61,51 +61,90 @@
     <div class="row">
         <div class="col-md-12">
             <div class="col-md-8">
-                <h2>Zarządzaj użytkownikami</h2>
+                <h2>Zarządzaj wydziałami i kierunkami</h2>
             </div>
             <div class="container">
                 <div class="row mb-4">
                     <div class="col-sm" sec:authorize="hasAuthority('ADMIN')">
-                        <a th:href="@{/admin/userList}" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Użytkownicy</a>
+                        <a th:href="@{/admin/userList}" class="btn btn-primary btn-lg btn-block" role="button"
+                           aria-pressed="true">Użytkownicy</a>
                     </div>
                     <div class="col-sm" sec:authorize="hasAuthority('ADMIN')">
-                        <a th:href="@{/admin/adminList}" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Administratorzy</a>
+                        <a th:href="@{/admin/adminList}" class="btn btn-primary btn-lg btn-block" role="button"
+                           aria-pressed="true">Administratorzy</a>
                     </div>
                     <div class="col-sm" sec:authorize="hasAuthority('ADMIN')">
-                        <a th:href="@{/admin/facultiesSpecializationsList}" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Wydziały i kierunki</a>
+                        <a th:href="@{/admin/facultiesSpecializationsList}" class="btn btn-primary btn-lg btn-block"
+                           role="button" aria-pressed="true">Wydziały i kierunki</a>
                     </div>
                 </div>
             </div>
+
+            <!--FACULTIES-->
             <table class="table table-sm">
                 <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Imię</th>
-                    <th scope="col">Nazwisko</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Ankieta</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nazwa</th>
+                    <th scope="col">Adres</th>
+                    <th scope="col">Strona</th>
+                    <th scope="col">Logo</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="currentUser : ${users}">
-                    <th:block th:each="index : ${#numbers.sequence(0, #arrays.length(currentUser.getRoles())-1)}">
-                        <th:block th:if="${currentUser.getRoles()[index].getId()==1}">
-                            <th scope="row" th:text="${currentUser.id}"></th>
-                            <td th:text="${currentUser.name}"></td>
-                            <td th:text="${currentUser.lastName}"></td>
-                            <td th:text="${currentUser.email}"></td>
-                            <td th:text="${currentUser.didSurvey()}"></td>
-                        </th:block>
-                    </th:block>
+                <tr th:each="currentFaculty : ${faculties}">
+                    <th scope="row" th:text="${currentFaculty.id}"></th>
+                    <td th:text="${currentFaculty.name}"></td>
+                    <td th:text="${currentFaculty.address}"></td>
+                    <td th:text="${currentFaculty.website}"></td>
+                    <td th:text="${currentFaculty.logo}"></td>
+
+                    <td>
+                        <a th:href="@{/admin/facultiesSpecializationsEdit}" class="btn btn-danger"
+                           role="button" aria-pressed="true">Edytuj</a>
+                    </td>
+
+
                 </tr>
                 </tbody>
             </table>
 
+            <!--SPECIALIZATIONS-->
+            <table class="table table-sm">
+                <thead>
+                <tr>
+                    <th scope="col">ID kierunku</th>
+                    <th scope="col">Nazwa</th>
+                    <th scope="col">Opis</th>
+                    <th scope="col">ID wydziału</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tr th:each="currentSpecialization : ${specializations}">
+                    <th scope="row" th:text="${currentSpecialization.id}"></th>
+                    <td th:text="${currentSpecialization.name}"></td>
+                    <td th:text="${currentSpecialization.description}"></td>
+                    <td th:text="${currentSpecialization.faculty.id}"></td>
+                    <td>
+                        <a th:href="@{/admin/facultiesSpecializationsEdit}" class="btn btn-danger"
+                           role="button" aria-pressed="true">Edytuj</a>
 
+
+                    </td>
+                </tr>
+            </table>
         </div>
-    </div>
+        </div>
 </div>
 </body>
 </html>
+        <!--<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>-->
+
+
+        <!--<form action="#" th:action="@{/admin/facultiesSpecializationsList}"-->
+              <!--th:object="${currentSpecialization}" method="post">-->
+        <!--</form>-->
+

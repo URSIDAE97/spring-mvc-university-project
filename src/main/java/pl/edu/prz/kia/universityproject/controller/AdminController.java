@@ -1,29 +1,43 @@
 package pl.edu.prz.kia.universityproject.controller;
 
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import pl.edu.prz.kia.universityproject.model.Faculty;
+import pl.edu.prz.kia.universityproject.model.Specialization;
 import pl.edu.prz.kia.universityproject.model.User;
-import pl.edu.prz.kia.universityproject.service.RoleService;
-import pl.edu.prz.kia.universityproject.service.UserAnswerService;
-import pl.edu.prz.kia.universityproject.service.UserService;
-import pl.edu.prz.kia.universityproject.service.UserServiceImpl;
-
+import pl.edu.prz.kia.universityproject.service.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import javax.jws.WebParam;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.util.List;
 
 
 @Controller
 public class AdminController {
 
+    @Autowired
+    private FacultyService facultyService;
+    @Autowired
+    private FacultyService editFaculty;
+    @Autowired
+    private SpecializationService specializationService;
+
     private UserService userService;
     private RoleService roleService;
-    private UserAnswerService userAnswerService;
+    private UserAnswerService userAnswerService;private Object facultiesPost;
 
     @Autowired
     public AdminController(UserService userService) {
@@ -71,4 +85,45 @@ public class AdminController {
         userService.deleteUser(userId);
         return "redirect:userList";
     }
+    @GetMapping(value="/admin/facultiesSpecializationsList")
+    public ModelAndView adminFacultiesSpecializationsList(){
+        ModelAndView modelAndView = new ModelAndView();
+        List<Faculty> faculties = facultyService.findAll();
+        List <Specialization> specializations = specializationService.findAll();
+        modelAndView.addObject("faculties", faculties);
+        modelAndView.addObject("specializations", specializations);
+        modelAndView.setViewName("admin/facultiesSpecializationsList");
+        return modelAndView;
+    }
+    @GetMapping(value="/admin/facultiesSpecializationsEdit")
+    public ModelAndView adminFacultiesSpecializationsEdit(){
+        ModelAndView modelAndView = new ModelAndView();
+        List<Faculty> faculties = facultyService.findAll();
+        List <Specialization> specializations = specializationService.findAll();
+        Specialization specialization = new Specialization();
+        modelAndView.addObject("faculties", faculties);
+        modelAndView.addObject("specializations", specializations);
+        modelAndView.addObject("specialization", specialization);
+        modelAndView.setViewName("admin/facultiesSpecializationsEdit");
+        return modelAndView;
+    }
+
+    @PostMapping(value="/admin/facultiesSpecializationsEdit")
+    public String specializationUpdate(@Valid Specialization specialization) {
+        ModelAndView modelAndView = new ModelAndView();
+        specializationService.updateSpecialization(specialization);
+        List<Faculty> faculties = facultyService.findAll();
+        List <Specialization> specializations = specializationService.findAll();
+        modelAndView.addObject("successMessage", "zapisano");
+        modelAndView.addObject("specialization", specialization);
+        modelAndView.addObject("faculties", faculties);
+//        modelAndView.addObject("specializations", specializations);
+        modelAndView.setViewName("admin/facultiesSpecializationsList");
+        return "redirect:/admin/facultiesSpecializationsList";
+    }
+//    @PostMapping(value="/admin/facultiesSpecializationsEdit")
+//    public String specializationUpdate(@ModelAttribute("wrapper") Specialization spec) {
+//        spec.getId(specializationService.updateSpecialization());
+//        return "redirect:/admin/facultiesSpecializationsEdit";
+//   }
 }
