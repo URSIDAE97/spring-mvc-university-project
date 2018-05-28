@@ -74,17 +74,11 @@ public class UserServiceImpl implements UserService {
             }
             results.put(sum, spec);
         }
-        Specialization spec1 = results.get(results.firstKey());
-        results.remove(results.firstKey());
-        Specialization spec2 = results.get(results.firstKey());
-        results.remove(results.firstKey());
-        Specialization spec3 = results.get(results.firstKey());
-        results.remove(results.firstKey());
         if(user.didSurvey() == true)
         	user.getSpecializations().clear();
-        user.getSpecializations().add(spec1);
-        user.getSpecializations().add(spec2);
-        user.getSpecializations().add(spec3);
+        for(int i = 0; i < 3; i++) {
+        	user.getSpecializations().add(results.remove(results.firstKey()));
+        }
         user.setSurvey(true);
         userRepository.save(user);
     }
