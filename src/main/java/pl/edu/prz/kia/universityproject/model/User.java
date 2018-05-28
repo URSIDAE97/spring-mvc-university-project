@@ -120,7 +120,7 @@ public class User {
 		return specializations;
 	}
 
-	public void setSpectializations(Set<Specialization> specializations) {
+	public void setSpecializations(Set<Specialization> specializations) {
 		this.specializations = specializations;
 	}
 
