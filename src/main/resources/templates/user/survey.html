@@ -84,7 +84,7 @@
                         </td>
                         <td align="center">0<input type="range" min="0" max="10" value="5" th:attr="id='Status' + ${rowStat.count}" onchange="sliderChange(this.value, this.id)"
                                    th:field="*{answerList[__${rowStat.index}__].value}"
-                                   th:value="*{answerList[__${rowStat.index}__].getValue()}"/>10 <br /> <span th:attr="id='sliderStatus' + ${rowStat.count}">0</span>
+                                   th:value="*{answerList[__${rowStat.index}__].getValue()}"/>10 <br /> <span th:attr="id='sliderStatus' + ${rowStat.count}" th:text="*{answerList[__${rowStat.index}__].getValue()}">0</span>
 
                         </td>
                         </tr>
