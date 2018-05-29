@@ -9,11 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import pl.edu.prz.kia.universityproject.model.Faculty;
+import pl.edu.prz.kia.universityproject.model.Specialization;
 import pl.edu.prz.kia.universityproject.model.User;
-import pl.edu.prz.kia.universityproject.service.RoleService;
-import pl.edu.prz.kia.universityproject.service.UserAnswerService;
-import pl.edu.prz.kia.universityproject.service.UserService;
-import pl.edu.prz.kia.universityproject.service.UserServiceImpl;
+import pl.edu.prz.kia.universityproject.service.*;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,6 +26,10 @@ public class AdminController {
     private UserService userService;
     private RoleService roleService;
     private UserAnswerService userAnswerService;
+    @Autowired
+    private FacultyService facultyService;
+    @Autowired
+    private SpecializationService specializationService;
 
     @Autowired
     public AdminController(UserService userService) {
@@ -39,6 +42,17 @@ public class AdminController {
         User user = userService.getOne(userId);
         modelAndView.addObject("user", user);
         modelAndView.setViewName("admin/edit");
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/admin/facultiesList")
+    public ModelAndView facultiesList() {
+        ModelAndView modelAndView = new ModelAndView();
+        List<Faculty> faculties = facultyService.findAll();
+        List<Specialization> specializations = specializationService.findAll();
+        modelAndView.addObject("faculties", faculties);
+        modelAndView.addObject("specs", specializations);
+        modelAndView.setViewName("admin/facultiesList");
         return modelAndView;
     }
    
