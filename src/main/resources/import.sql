@@ -4,7 +4,6 @@ INSERT INTO rola (id_roli, rola) VALUES (2, 'USER');
 
 INSERT INTO uzytkownik (id_uzytkownika, email, haslo, imie, nazwisko, active, ankieta) VALUES (1, 'admin@admin', '$2a$10$Anb7jpgtB7VNkiHyV0kvWuYgHsHwKRQMPzQ.EOZLGXgnj/8bSzfha', 'admin', 'admin', 1, false);
 
-
 INSERT INTO uzytkownik_rola(id_uzytkownika, id_roli) VALUES (1, 1);
 INSERT INTO uzytkownik_rola (id_uzytkownika, id_roli) VALUES (1, 2);
 
