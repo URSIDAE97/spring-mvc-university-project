@@ -17,16 +17,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        function sliderChange(value, id) {
+            document.getElementById('slider'+id).innerHTML = value;
+        }
+    </script>
 </head>
 <body>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v3.0';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="header">
     <div class="container">
         <a class="navbar-brand" href="#">Kierunki PRZ</a>
@@ -44,7 +41,6 @@
                         <a class="nav-link" th:href="@{/user/home}">Twoja lista</a>
                     </div>
                 </li>
-
             </ul>
             <div sec:authorize="isAnonymous()">
                 <a th:href="@{/login}" class="btn btn-outline-success" role="button" aria-pressed="true">Logowanie</a>
@@ -60,6 +56,7 @@
         </div>
     </div>
 </nav>
+
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-12">
@@ -79,64 +76,36 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card-columns">
-                        <div class="card" th:each="faculty : ${faculties}">
+            <table class="table table-sm">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Imię</th>
+                    <th scope="col">Nazwisko</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Ankieta</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="currentUser : ${users}">
+                    <th:block th:each="index : ${#numbers.sequence(0, #arrays.length(currentUser.getRoles())-1)}">
+                        <th:block th:if="${currentUser.getRoles()[index].getId()==1}">
+                            <th scope="row" th:text="${currentUser.id}"></th>
+                            <td th:text="${currentUser.name}"></td>
+                            <td th:text="${currentUser.lastName}"></td>
+                            <td th:text="${currentUser.email}"></td>
+                            <td th:text="${currentUser.didSurvey()}"></td>
+                        </th:block>
+                    </th:block>
+                </tr>
+                </tbody>
+            </table>
 
-                            <img  class="card-img-top" th:attr="src=${faculty.logo}" alt="Card image cap" border="10">
-                            <div class="card-body">
-                                <h5 class="card-title" th:text="${faculty.name}">Card title</h5>
-                                <h6 class="card-subtitle" th:text="${faculty.address}"></h6>
-                                <br>
-                                <h6 class="card-subtitle2">Kierunki:</h6>
-                                <div th:each="spec : ${specs}">
-                                    <p th:text="(${spec.faculty.id} eq ${faculty.id}) ? ('    ' + ${spec.name})"></p>
-                                </div>
-                                <a th:attr="href=${faculty.website}" class="btn btn-primary">Strona wydzialu</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
-
-        <div class="container mt-4">
-            <div class="row">
-                <div class="col-md-8">
-                    <h2>Użytkownicy przypisani do poszczególnych kierunków</h2>
-
-                    <div class="list-group">
-                        <div id="accordion">
-                            <div class="card" th:each="spec : ${specs}">
-                                <div class="card-header" th:id="${spec.name}">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link" data-toggle="collapse"
-                                                aria-expanded="false"
-                                                th:attr="aria-controls='collapse' + ${spec.id}, data-target='#collapse' + ${spec.id}"
-                                                th:text="${spec.name}">
-
-                                        </button>
-                                    </h5>
-
-                                </div>
-
-                                <div th:attr="id='collapse' + ${spec.id}" class="collapse"
-                                     aria-labelledby="headingOne" data-parent="#accordion">
-                                    <div class="card-body">
-                                        <div th:each="user : ${users}">
-                                            <h6 th:text="(${#sets.contains(user.specializations, spec)}) ? ('    ' + ${user.name} + ' ' + ${user.lastName})"></h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div th:text="------------------------------">
-                    </div>
-                </div>
-            </div>
-        </div>
-
+    </div>
+</div>
 </body>
 </html>

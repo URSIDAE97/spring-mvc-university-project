@@ -50,8 +50,10 @@ public class AdminController {
         ModelAndView modelAndView = new ModelAndView();
         List<Faculty> faculties = facultyService.findAll();
         List<Specialization> specializations = specializationService.findAll();
+        List <User> users = userService.findAll();
         modelAndView.addObject("faculties", faculties);
         modelAndView.addObject("specs", specializations);
+        modelAndView.addObject("users", users);
         modelAndView.setViewName("admin/facultiesList");
         return modelAndView;
     }
