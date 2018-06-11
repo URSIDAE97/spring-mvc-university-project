@@ -9,7 +9,8 @@ import java.util.List;
 public class Specialization {
 
     @Id
-    @GeneratedValue
+	@SequenceGenerator(name="spec_id_sequence", sequenceName = "spec_seq", initialValue=28, allocationSize=1)
+    @GeneratedValue(generator="spec_id_sequence", strategy = GenerationType.SEQUENCE)
     @Column(name="id_kierunku")
     private Long id;
 
