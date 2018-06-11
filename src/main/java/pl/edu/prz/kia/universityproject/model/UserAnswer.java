@@ -9,7 +9,8 @@ import javax.validation.constraints.NotNull;
 public class UserAnswer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name="user_answer_sequence", sequenceName = "user_answer_seq", initialValue=42, allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="user_answer_sequence")
     @Column (name="id_odpowiedzi_uzytkownika")
     private Long id;
 
