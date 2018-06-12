@@ -98,4 +98,15 @@ public class UserController {
 
         return "redirect:/activation";
     }
+
+    @GetMapping(value="/user/edit")
+    public ModelAndView userEdit() {
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        modelAndView.addObject( "user", user);
+        modelAndView.setViewName("user/edit");
+        return modelAndView;
+    }
+
 }
