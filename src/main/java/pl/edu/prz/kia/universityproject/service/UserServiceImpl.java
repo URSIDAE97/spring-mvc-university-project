@@ -89,6 +89,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> findAllUsersCustomQuery() {
+        return userRepository.findAllUsersCustomQuery();
+    }
+
+    @Override
     public void deleteUser(Long userId) {
         userRepository.deleteById(userId);
     }

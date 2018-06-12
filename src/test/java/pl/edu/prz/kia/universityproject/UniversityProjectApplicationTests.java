@@ -34,6 +34,11 @@ public class UniversityProjectApplicationTests {
 			}
 
 			@Override
+			public List<User> findAllUsersCustomQuery() {
+				return null;
+			}
+
+			@Override
 			public void saveUser(User user) {
 
 			}

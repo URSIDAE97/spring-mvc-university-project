@@ -82,7 +82,7 @@ public class AdminController {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
-        List <User> users = userService.findAll();
+        List <User> users = userService.findAllUsersCustomQuery();
         modelAndView.addObject("users", users);
         modelAndView.addObject("user", user);
         modelAndView.setViewName("admin/userList");
