@@ -103,7 +103,6 @@ public class AdminController {
 
     @GetMapping(value="/admin/delete")
     public String adminUserDelete(@RequestParam(name="userId")Long userId) {
-        System.out.println(userId);
         userService.deleteUser(userId);
         return "redirect:userList";
     }
