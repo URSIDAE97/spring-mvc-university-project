@@ -6,4 +6,5 @@ import pl.edu.prz.kia.universityproject.model.Faculty;
 
 @Repository
 public interface FacultyRepository extends JpaRepository<Faculty, Long> {
+    Faculty findByName(String name);
 }

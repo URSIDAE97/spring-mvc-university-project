@@ -6,4 +6,5 @@ import pl.edu.prz.kia.universityproject.model.Specialization;
 
 @Repository
 public interface SpecializationRepository extends JpaRepository<Specialization, Long> {
+    Specialization findByName(String name);
 }

@@ -6,6 +6,7 @@ import pl.edu.prz.kia.universityproject.model.Faculty;
 import pl.edu.prz.kia.universityproject.repository.FacultyRepository;
 
 import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class FacultyService {
@@ -20,4 +21,11 @@ public class FacultyService {
     public List<Faculty> findAll() {
         return facultyRepository.findAll();
     }
+    
+    @Transactional
+    public void saveFaculty(Faculty faculty){
+        facultyRepository.save(faculty);
+    }
+    public Faculty findFacultyById(Long id){return facultyRepository.getOne(id);}
+    public Faculty findFacultyByName(String name) { return facultyRepository.findByName(name); }
 }
