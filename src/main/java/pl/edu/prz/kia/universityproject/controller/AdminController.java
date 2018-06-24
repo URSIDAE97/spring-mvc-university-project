@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+import javax.validation.Valid;
+import org.springframework.validation.BindingResult;
 
 
 @Controller
@@ -59,7 +61,7 @@ public class AdminController {
     }
    
     @PostMapping(value = "/admin/edit/{userId}")
-    public String createNewUser(@PathVariable Long userId, @ModelAttribute("updateUser") User updateUser) {
+    public String editUser(@PathVariable Long userId, @ModelAttribute("updateUser") User updateUser) {
         ModelAndView modelAndView = new ModelAndView();
         userService.updateUser(updateUser);
         modelAndView.addObject("successMessage", "Dane uzytkownika zostaly zaktualizowane.");
@@ -103,8 +105,86 @@ public class AdminController {
 
     @GetMapping(value="/admin/delete")
     public String adminUserDelete(@RequestParam(name="userId")Long userId) {
-        System.out.println(userId);
         userService.deleteUser(userId);
         return "redirect:userList";
+    }
+    @GetMapping(value="/admin/facultiesSpecializationsList")
+    public ModelAndView adminFacultiesSpecializationsList(){
+        ModelAndView modelAndView = new ModelAndView();
+        List<Faculty> faculties = facultyService.findAll();
+        List <Specialization> specializations = specializationService.findAll();
+        modelAndView.addObject("faculties", faculties);
+        modelAndView.addObject("specializations", specializations);
+        modelAndView.setViewName("admin/facultiesSpecializationsList");
+        return modelAndView;
+    }
+    
+    @GetMapping(value="/admin/facultiesAdd")
+    public ModelAndView adminFacultiesAdd(){
+        ModelAndView modelAndView = new ModelAndView();
+
+        Faculty faculty = new Faculty();
+        modelAndView.addObject("faculty", faculty);
+        modelAndView.setViewName("admin/facultiesAdd");
+        return modelAndView;
+    }
+
+    
+    @PostMapping(value = "/admin/facultiesAdd")
+    public ModelAndView createNewFaculty(@Valid Faculty faculty, BindingResult bindingResult) {
+        ModelAndView modelAndView = new ModelAndView();
+        Faculty facultyExists = facultyService.findFacultyByName(faculty.getName());
+        if (facultyExists != null) {
+            bindingResult
+                    .rejectValue("name", "error.faculty",
+                            "Juz istnieje taki wydzial.");
+        }
+        if (bindingResult.hasErrors()) {
+            modelAndView.setViewName("admin/facultiesAdd");
+        } else {
+
+            facultyService.saveFaculty(faculty);
+            modelAndView.addObject("successMessage", "Dodano wydzial.");
+            modelAndView.addObject("faculty", new Faculty());
+            modelAndView.setViewName("redirect:facultiesSpecializationsList");
+
+        }
+        return modelAndView;
+    }
+
+    @GetMapping(value="/admin/facultiesSpecializationsAdd")
+    public ModelAndView adminFacultiesSpecializationsAdd(){
+        ModelAndView modelAndView = new ModelAndView();
+        Specialization specialization = new Specialization();
+        List<Faculty> faculties =  facultyService.findAll();
+        modelAndView.addObject("specialization", specialization);
+        modelAndView.addObject("faculties", faculties);
+        modelAndView.setViewName("admin/facultiesSpecializationsAdd");
+        return modelAndView;
+    }
+
+    @PostMapping(value = "/admin/facultiesSpecializationsAdd")
+    public ModelAndView createNewSpecialisation(@Valid Specialization specialization, BindingResult bindingResult) {
+        ModelAndView modelAndView = new ModelAndView();
+        List<Faculty> faculties = facultyService.findAll();
+        Specialization specializationExists = specializationService.findSpecializationByName(specialization.getName());
+        if (specializationExists != null) {
+            bindingResult
+                    .rejectValue("name", "error.specialization",
+                            "Juz istnieje taki kierunek.");
+        }
+        if (bindingResult.hasErrors()) {
+            modelAndView.setViewName("admin/facultiesSpecializationsAdd");
+            modelAndView.addObject("faculties", faculties);
+        } else {
+
+                specializationService.saveSpecialization(specialization);
+                modelAndView.addObject("successMessage", "Dodano kierunek.");
+                modelAndView.addObject("faculty", new Specialization());
+                modelAndView.addObject("faculties", faculties);
+                modelAndView.setViewName("redirect:facultiesSpecializationsList");
+
+        }
+        return modelAndView;
     }
 }
