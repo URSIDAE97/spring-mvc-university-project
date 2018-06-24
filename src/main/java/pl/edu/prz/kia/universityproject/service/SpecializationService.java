@@ -8,6 +8,7 @@ import pl.edu.prz.kia.universityproject.repository.FacultyRepository;
 import pl.edu.prz.kia.universityproject.repository.SpecializationRepository;
 
 import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class SpecializationService {
@@ -22,4 +23,13 @@ public class SpecializationService {
     public List<Specialization> findAll() {
         return specializationRepository.findAll();
     }
+    
+    @Transactional
+    public void saveSpecialization(Specialization specialization){
+        specializationRepository.save(specialization);
+    }
+
+
+    public Specialization findSpecializationById(Long id){return specializationRepository.getOne(id);}
+    public Specialization findSpecializationByName(String name) { return specializationRepository.findByName(name); }
 }
