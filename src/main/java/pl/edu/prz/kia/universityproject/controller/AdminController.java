@@ -59,7 +59,7 @@ public class AdminController {
     }
    
     @PostMapping(value = "/admin/edit/{userId}")
-    public String createNewUser(@PathVariable Long userId, @ModelAttribute("updateUser") User updateUser) {
+    public String editUser(@PathVariable Long userId, @ModelAttribute("updateUser") User updateUser) {
         ModelAndView modelAndView = new ModelAndView();
         userService.updateUser(updateUser);
         modelAndView.addObject("successMessage", "Dane uzytkownika zostaly zaktualizowane.");
