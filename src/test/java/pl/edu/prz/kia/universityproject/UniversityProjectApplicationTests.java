@@ -66,6 +66,10 @@ public class UniversityProjectApplicationTests {
 			public void updateUser(User user) {
 				
 			}
+			@Override
+			public void updateUserByUser(User user){
+
+			}
 		};
 		//HomeController homeController = new HomeController();
 		LoginController loginController = new LoginController(mockUserService);

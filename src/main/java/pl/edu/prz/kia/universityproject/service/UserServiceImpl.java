@@ -97,12 +97,19 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(Long userId) {
         userRepository.deleteById(userId);
     }
-    
+	@Override
+	public void updateUser(User user) {
+        this.getOne(user.getId()).setName(user.getName());
+        this.getOne(user.getId()).setLastName(user.getLastName());
+        this.getOne(user.getId()).setEmail(user.getEmail());
+        userRepository.save(this.getOne(user.getId()));
+    }
     @Override
-    public void updateUser(User user) {
-	this.getOne(user.getId()).setName(user.getName());
-	this.getOne(user.getId()).setLastName(user.getLastName());
-	this.getOne(user.getId()).setEmail(user.getEmail());
-	userRepository.save(this.getOne(user.getId()));
+    public void updateUserByUser(User user){
+        this.getOne(user.getId()).setName(user.getName());
+        this.getOne(user.getId()).setLastName(user.getLastName());
+        this.getOne(user.getId()).setEmail(user.getEmail());
+        this.getOne(user.getId()).setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        userRepository.save(this.getOne(user.getId()));
     }
 }

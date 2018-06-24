@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Page</title>
@@ -45,65 +44,56 @@
 
 <div class="container mt-4">
     <div class="row">
-        <div class="col-md-8">
-
-
-
-            <div class="alert alert-success alert-dismissible fade show" role="alert" th:if="${not user.didSurvey()}">
-                <p>
-                    <strong>Nie uzupełniłeś jeszcze ankiety! </strong> Po uzupełnieniu ankiety wyświetlimy Ci listę kierunków na które się nadajesz!
-                </p>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <a class="btn btn-outline-success btn-lg" th:href="@{/user/survey}" role="button">Rozpocznij ankietę</a>
-            </div>
-
-            <div th:if="${user.didSurvey()}">
-                <h2>Kierunki wybrane dla Ciebie</h2>
-                <p>Kierunki, które zostały przyporządkowane na podstawie ankiety.</p>
-                <ul class="list-group">
-                    <li class="list-group-item" th:if="${not #lists.isEmpty(user.getSpecializations())}" th:text="${user.getSpecializations()[0].name}">1</li>
-                    <li class="list-group-item" th:if="${not #lists.isEmpty(user.getSpecializations())}" th:text="${user.getSpecializations()[1].name}">1</li>
-                    <li class="list-group-item" th:if="${not #lists.isEmpty(user.getSpecializations())}" th:text="${user.getSpecializations()[2].name}">1</li>
-                </ul>
-            </div>
+        <div class="col-md-12">
+            <h3>Edycja Użytkownika</h3>
         </div>
-        <div class="col-md-4">
-            <div class="alert alert-info" role="alert" th:if="${user.didSurvey()}">
-                <p>
-                    <strong>Pamiętaj!</strong> Zawsze możesz edytować swoje odpowiedzi.
-                </p>
-                <a class="btn btn-outline-primary" th:href="@{/user/survey}" role="button">Edytuj</a>
-            </div>
-            <h4>Twoje dane</h4>
-            <table class="table table-sm">
-                <tbody>
-                    <tr>
-                        <td><code class="highlighter-rouge">Imię</code></td>
-                        <td th:text="${user.name}">1</td>
-                    </tr>
-                    <tr>
-                        <td><code class="highlighter-rouge">Nazwisko</code></td>
-                        <td th:text="${user.lastName}">1</td>
-                    </tr>
-                    <tr>
-                        <td><code class="highlighter-rouge">Email</code></td>
-                        <td th:text="${user.email}">1</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="alert alert-info" role="alert">
-                <p>
-                    Edytuj swój profil
-                </p>
-                <a class="btn btn-outline-primary" th:href="@{/user/edit}" role="button">Edytuj</a>
+
+        <div class="col-md-5">
+            <div class="panel panel-default" style="margin-top: 33px">
+                <div class="panel-body">
+                    <form autocomplete="off" action="#" th:action="@{/user/edit}"
+                          th:object="${user}" method="post"
+                          role="form">
+                        <fieldset>
+                            <div class="form-group">
+                                <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+                                       class="validation-message"></label>
+                                <input type="text" th:field="*{name}" placeholder="Imie"
+                                       class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label  th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                                        class="validation-message"></label>
+                                <input type="text" th:field="*{lastName}"
+                                       placeholder="Nazwisko" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" th:field="*{email}" placeholder="Email"
+                                       class="form-control" />
+                                <label
+                                        th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                                        class="validation-message"></label>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" th:field="*{password}"
+                                       placeholder="Haslo" class="form-control" />
+                                <label
+                                        th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                                        class="validation-message"></label>
+                            </div>
+                            <input type="hidden" th:field="*{id}"/>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-lg btn-success btn-block">Zapisz zmiany</button>
+                            </div>
+
+                            <span th:utext="${successMessage}"></span>
+
+                        </fieldset>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-
 </body>
-
 </html>
