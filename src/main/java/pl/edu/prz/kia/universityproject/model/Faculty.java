@@ -9,7 +9,7 @@ import java.util.List;
 public class Faculty {
 
     @Id
-	@SequenceGenerator(name="faculty_id_sequence", sequenceName = "faculty_seq", initialValue=8, allocationSize=1)
+    @SequenceGenerator(name="faculty_id_sequence", sequenceName = "faculty_seq", initialValue=8, allocationSize=1)
     @GeneratedValue(generator="faculty_id_sequence", strategy = GenerationType.SEQUENCE)
     @Column (name="id_wydzialu")
     private Long id;

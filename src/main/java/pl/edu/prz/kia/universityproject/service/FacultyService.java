@@ -1,9 +1,12 @@
 package pl.edu.prz.kia.universityproject.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 import pl.edu.prz.kia.universityproject.model.Faculty;
+import pl.edu.prz.kia.universityproject.model.Specialization;
 import pl.edu.prz.kia.universityproject.repository.FacultyRepository;
+import pl.edu.prz.kia.universityproject.repository.SpecializationRepository;
 
 import java.util.List;
 
@@ -11,6 +14,7 @@ import java.util.List;
 public class FacultyService {
 
     private FacultyRepository facultyRepository;
+    private SpecializationRepository specializationRepository;
 
     @Autowired
     public FacultyService(FacultyRepository facultyRepository) {
@@ -20,4 +24,11 @@ public class FacultyService {
     public List<Faculty> findAll() {
         return facultyRepository.findAll();
     }
+
+    @Transactional
+    public void saveFaculty(Faculty faculty){
+        facultyRepository.save(faculty);
+    }
+    public Faculty findFacultyById(Long id){return facultyRepository.getOne(id);}
+    public Faculty findFacultyByName(String name) { return facultyRepository.findByName(name); }
 }
