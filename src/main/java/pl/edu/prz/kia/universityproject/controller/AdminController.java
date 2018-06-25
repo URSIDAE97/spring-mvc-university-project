@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import pl.edu.prz.kia.universityproject.model.Faculty;
+import pl.edu.prz.kia.universityproject.model.Question;
 import pl.edu.prz.kia.universityproject.model.Specialization;
 import pl.edu.prz.kia.universityproject.model.User;
 import pl.edu.prz.kia.universityproject.service.*;
