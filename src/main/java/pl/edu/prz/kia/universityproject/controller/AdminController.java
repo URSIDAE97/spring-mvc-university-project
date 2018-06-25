@@ -29,6 +29,8 @@ public class AdminController {
     private RoleService roleService;
     private UserAnswerService userAnswerService;
     @Autowired
+    private QuestionService questionService;
+    @Autowired
     private FacultyService facultyService;
     @Autowired
     private SpecializationService specializationService;
@@ -186,5 +188,31 @@ public class AdminController {
 
         }
         return modelAndView;
+    }
+	@GetMapping(value="/admin/questionnaire")
+    public ModelAndView questionnaire(){
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        List <Question> question = questionService.findAll();
+        modelAndView.addObject("questions", question);
+        modelAndView.setViewName("admin/questionnaire");
+        return modelAndView;
+    }
+
+    @GetMapping(value="/admin/editQuestionnaire/{questionId}")
+    public ModelAndView adminQuestionnaireEdit(@PathVariable Long questionId) {
+        ModelAndView modelAndView = new ModelAndView();
+        Question question = questionService.getOne(questionId);
+        modelAndView.addObject("question", question);
+        modelAndView.setViewName("admin/editQuestionnaire");
+        return modelAndView;
+    }
+
+    @PostMapping(value = "/admin/editQuestionnaire/{questionId}")
+    public String createNewQuestion(@PathVariable Long questionId, @ModelAttribute("updateQuestion") Question updateQuestion) {
+        ModelAndView modelAndView = new ModelAndView();
+        questionService.updateQuestion(updateQuestion);
+        modelAndView.addObject("successMessage", "Pytanie ankiety zostalo zaktualizowane.");
+        return "redirect:/admin/questionnaire";
     }
 }
