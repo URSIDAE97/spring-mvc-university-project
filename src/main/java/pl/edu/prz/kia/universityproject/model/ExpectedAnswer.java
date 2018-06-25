@@ -24,7 +24,7 @@ public class ExpectedAnswer {
     private Question question;
 
     @JoinColumn (name="id_kierunku")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Specialization specialization;
 
     public Long getId() {

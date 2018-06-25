@@ -16,8 +16,7 @@ import org.hibernate.annotations.OnDeleteAction;
 public class User {
 
 	@Id
-	@SequenceGenerator(name="user_id_sequence", sequenceName = "user_seq", initialValue=2, allocationSize=1)
-	@GeneratedValue(generator = "user_id_sequence", strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_uzytkownika")
 	private Long id;
 
@@ -51,7 +50,7 @@ public class User {
 	@JoinTable(name = "uzytkownik_rola", joinColumns = @JoinColumn(name = "id_uzytkownika"), inverseJoinColumns = @JoinColumn(name = "id_roli"))
 	private Set<Role> roles;
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "uzytkownik_kierunek", joinColumns = @JoinColumn(name = "id_uzytkownika"), inverseJoinColumns = @JoinColumn(name = "id_kierunku"))
 	private Set<Specialization> specializations;
 

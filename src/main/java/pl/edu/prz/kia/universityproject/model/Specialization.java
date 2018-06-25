@@ -9,8 +9,7 @@ import java.util.List;
 public class Specialization {
 
     @Id
-	@SequenceGenerator(name="spec_id_sequence", sequenceName = "spec_seq", initialValue=28, allocationSize=1)
-    @GeneratedValue(generator="spec_id_sequence", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue
     @Column(name="id_kierunku")
     private Long id;
 
@@ -23,10 +22,10 @@ public class Specialization {
     private String description;
 
     @JoinColumn(name = "id_wydzialu")
-    @ManyToOne
+    @ManyToOne()
     private Faculty faculty;
 
-    @OneToMany(mappedBy = "specialization")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "specialization")
     private List <ExpectedAnswer> expectedAnswers;
 
     public Long getId() {

@@ -1,6 +1,5 @@
 package pl.edu.prz.kia.universityproject.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserAnswersWrapper {

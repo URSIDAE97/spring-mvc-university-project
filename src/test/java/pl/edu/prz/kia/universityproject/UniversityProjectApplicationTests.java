@@ -34,11 +34,6 @@ public class UniversityProjectApplicationTests {
 			}
 
 			@Override
-			public List<User> findAllUsersCustomQuery() {
-				return null;
-			}
-
-			@Override
 			public void saveUser(User user) {
 
 			}
@@ -65,6 +60,11 @@ public class UniversityProjectApplicationTests {
 			@Override
 			public void updateUser(User user) {
 				
+			}
+
+			@Override
+			public List<User> deleteSpecializationBySpecializationID(Long id) {
+				return null;
 			}
 		};
 		//HomeController homeController = new HomeController();

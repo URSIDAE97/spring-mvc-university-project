@@ -19,6 +19,7 @@ Aplikacja powinna być dostępna na: localhost:8080
 * Thymeleaf - Template engine
 * Bootstrap
 * H2 - Database engine (for testing purposes only)
-* PosgreSQL - Database engine
+* MySQL - Database engine
+* IntelliJ IDEA
 * Java 8
 

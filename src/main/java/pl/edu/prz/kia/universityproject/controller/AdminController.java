@@ -82,7 +82,7 @@ public class AdminController {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
-        List <User> users = userService.findAllUsersCustomQuery();
+        List <User> users = userService.findAll();
         modelAndView.addObject("users", users);
         modelAndView.addObject("user", user);
         modelAndView.setViewName("admin/userList");
@@ -101,9 +101,24 @@ public class AdminController {
         return modelAndView;
     }
 
-    @GetMapping(value="/admin/delete")
-    public String adminUserDelete(@RequestParam(name="userId")Long userId) {
+    @GetMapping(value="/admin/delete", params = "userId")
+    public String adminUserDelete(@RequestParam Long userId) {
+        System.out.println(userId);
         userService.deleteUser(userId);
         return "redirect:userList";
     }
+    
+    @GetMapping(value="/admin/delete", params = "specializationId")
+    public String adminSpecializationDelete(@RequestParam Long specializationId) {
+        System.out.println(specializationId);
+        specializationService.deleteSpecialization(specializationId);
+        return "redirect:facultiesList";
+    }
+    
+    @GetMapping(value="/admin/delete", params = "facultyId")
+    public String adminFacultyDelete(@RequestParam Long facultyId) {
+        facultyService.deleteFaculty(facultyId);
+        return "redirect:facultiesList";
+    }
+    
 }

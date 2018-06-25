@@ -19,6 +19,8 @@ public class UserServiceImpl implements UserService {
     private QuestionService questionService;
     private UserAnswerService userAnswerService;
     private EmailService emailService;
+    @Autowired
+    private SpecializationService specializationService;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder, QuestionService questionService,
@@ -89,20 +91,41 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findAllUsersCustomQuery() {
-        return userRepository.findAllUsersCustomQuery();
-    }
-
-    @Override
     public void deleteUser(Long userId) {
         userRepository.deleteById(userId);
     }
-    
-    @Override
-    public void updateUser(User user) {
-	this.getOne(user.getId()).setName(user.getName());
-	this.getOne(user.getId()).setLastName(user.getLastName());
-	this.getOne(user.getId()).setEmail(user.getEmail());
-	userRepository.save(this.getOne(user.getId()));
-    }
+	@Override
+	public void updateUser(User user){
+		this.getOne(user.getId()).setName(user.getName());
+		this.getOne(user.getId()).setLastName(user.getLastName());
+		this.getOne(user.getId()).setEmail(user.getEmail());
+		userRepository.save(this.getOne(user.getId()));
+		}
+	
+	@Override
+	public List<User> deleteSpecializationBySpecializationID(Long specId) {
+		List<User> listModifiedUser = new ArrayList<>();
+	
+		for(User user : findAll()) {
+			HashSet<Specialization> tempSpecialization = new HashSet<Specialization>();
+			if( user.getSpecializations()!=null) {
+				for(Specialization spec : user.getSpecializations()) {
+					if(spec.getId()==specId) {
+						tempSpecialization.add(spec);
+						System.out.println("\n\nDelete in "+user.getName() + " "+ user.getLastName()+"\n\n");
+						listModifiedUser.add(user);
+					}
+						
+				}
+				user.getSpecializations().removeAll(tempSpecialization);
+				if(user.getSpecializations().isEmpty()) {
+					user.setSurvey(false);
+				}
+				userRepository.save(user);
+			}
+			
+		}
+		return listModifiedUser;
+		
+	}
 }

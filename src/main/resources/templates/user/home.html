@@ -63,9 +63,7 @@
                 <h2>Kierunki wybrane dla Ciebie</h2>
                 <p>Kierunki, które zostały przyporządkowane na podstawie ankiety.</p>
                 <ul class="list-group">
-                    <li class="list-group-item" th:if="${not #lists.isEmpty(user.getSpecializations())}" th:text="${user.getSpecializations()[0].name}">1</li>
-                    <li class="list-group-item" th:if="${not #lists.isEmpty(user.getSpecializations())}" th:text="${user.getSpecializations()[1].name}">1</li>
-                    <li class="list-group-item" th:if="${not #lists.isEmpty(user.getSpecializations())}" th:text="${user.getSpecializations()[2].name}">1</li>
+                    <li th:each="spec : ${user.getSpecializations()}" class="list-group-item" th:text="${spec.name}">1</li>
                 </ul>
             </div>
         </div>

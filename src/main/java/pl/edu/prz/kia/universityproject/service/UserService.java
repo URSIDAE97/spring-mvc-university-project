@@ -14,5 +14,6 @@ public interface UserService {
 	List<User> findAll();
 	void deleteUser(Long userId);
 	void updateUser(User user);
-	List<User> findAllUsersCustomQuery();
+	List<User> deleteSpecializationBySpecializationID(Long id);
+
 }
