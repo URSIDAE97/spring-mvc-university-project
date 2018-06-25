@@ -77,6 +77,9 @@
                     <div class="col-sm" sec:authorize="hasAuthority('ADMIN')">
                         <a th:href="@{/admin/facultiesList}" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Wydziały i kierunki</a>
                     </div>
+                     <div class="col-sm" sec:authorize="hasAuthority('ADMIN')">
+                        <a th:href="@{/admin/questionnaire}" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Ankieta</a>
+                    </div>
                 </div>
                 <div class="row mb-4">
                    
