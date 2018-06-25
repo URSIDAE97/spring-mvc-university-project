@@ -24,4 +24,11 @@ public class QuestionService {
     public Long count() {
         return questionRepository.count();
     }
+    
+    public Question getOne(Long id) { return questionRepository.getOne(id); }
+
+    public void updateQuestion(Question question) {
+        this.getOne(question.getId()).setQuestion(question.getQuestion());
+        questionRepository.save(this.getOne(question.getId()));
+    }
 }

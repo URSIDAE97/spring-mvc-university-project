@@ -6,4 +6,5 @@ import pl.edu.prz.kia.universityproject.model.Question;
 
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Long> {
+  Question getOne(Long id);
 }
